@@ -1,0 +1,665 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Collect_HERMIT_Data" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_strLoanBalanceURLLoop" Type="InArgument(x:String)" />
+    <x:Property Name="in_TranactionsPageURLLoop" Type="InArgument(x:String)" />
+    <x:Property Name="in_strHERMITHomeURLLoop" Type="InArgument(x:String)" />
+    <x:Property Name="in_dtSOAWorksheetLoop" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_dtSOARequestsLoop" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_strPayoffDocArchiveFolderLoop" Type="InArgument(x:String)" />
+    <x:Property Name="in_strPayoffPageURLLoop" Type="InArgument(x:String)" />
+    <x:Property Name="in_strSOARequestsExcelFileLoop" Type="InArgument(x:String)" />
+    <x:Property Name="in_strContactsPageURLLoop" Type="InArgument(x:String)" />
+    <x:Property Name="io_strFHACaseNoModLoop" Type="InOutArgument(x:String)" />
+    <x:Property Name="io_strRequesterLoop" Type="InOutArgument(x:String)" />
+    <x:Property Name="in_strBOTsFolderPathLoop" Type="InArgument(x:String)" />
+    <x:Property Name="in_strSOAPDFFullPathLoop" Type="InArgument(x:String)" />
+    <x:Property Name="out_intRowCounter" Type="InArgument(x:Int32)" />
+    <x:Property Name="RowIndex" Type="InOutArgument(x:Int32)" />
+  </x:Members>
+  <this:Collect_HERMIT_Data.in_strLoanBalanceURLLoop>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Collect_HERMIT_Data.in_strLoanBalanceURLLoop>
+  <this:Collect_HERMIT_Data.in_strHERMITHomeURLLoop>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Collect_HERMIT_Data.in_strHERMITHomeURLLoop>
+  <this:Collect_HERMIT_Data.in_dtSOAWorksheetLoop>
+    <InArgument x:TypeArguments="sd:DataTable" />
+  </this:Collect_HERMIT_Data.in_dtSOAWorksheetLoop>
+  <this:Collect_HERMIT_Data.in_dtSOARequestsLoop>
+    <InArgument x:TypeArguments="sd:DataTable" />
+  </this:Collect_HERMIT_Data.in_dtSOARequestsLoop>
+  <this:Collect_HERMIT_Data.in_strSOARequestsExcelFileLoop>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Collect_HERMIT_Data.in_strSOARequestsExcelFileLoop>
+  <this:Collect_HERMIT_Data.in_strContactsPageURLLoop>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Collect_HERMIT_Data.in_strContactsPageURLLoop>
+  <this:Collect_HERMIT_Data.out_intRowCounter>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:Collect_HERMIT_Data.out_intRowCounter>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1113,3648</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Collect_HERMIT_Data_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Collect_HERMIT_Data" sap:VirtualizedContainerService.HintSize="748,3583" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strRequestedStatusLoop" />
+      <Variable x:TypeArguments="x:String" Name="strFHACaseNoLoop" />
+      <Variable x:TypeArguments="x:String" Name="strTranSFAmtLoop" />
+      <Variable x:TypeArguments="x:String" Name="strTranMIPAmtLoop" />
+      <Variable x:TypeArguments="x:String" Name="strTranIntAmtLoop" />
+      <Variable x:TypeArguments="x:String" Name="strTranPrinAmtLoop" />
+      <Variable x:TypeArguments="x:String" Name="strNotesDateLoop" />
+      <Variable x:TypeArguments="x:String" Name="strNotesLoop" />
+      <Variable x:TypeArguments="x:String" Name="strTodayDateLoop" />
+      <Variable x:TypeArguments="x:String" Name="strWrkshtResltPrincLoop" />
+      <Variable x:TypeArguments="x:String" Name="strWrkshtResltSFLoop" />
+      <Variable x:TypeArguments="x:String" Name="strWrkshtResltTotBalLoop" />
+      <Variable x:TypeArguments="x:String" Name="strPayoffTotalPayoffAmtLoop" />
+      <Variable x:TypeArguments="x:String" Name="strWrkshtResltIntLoop" />
+      <Variable x:TypeArguments="x:String" Name="strWrkshtResltMIPLoop" />
+      <Variable x:TypeArguments="x:String" Name="strPayoffDateLoop" />
+      <Variable x:TypeArguments="x:Int32" Default="0" Name="intRowCounterLoop" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Home" sap:VirtualizedContainerService.HintSize="686,3472" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="43f7d59e-11a6-4254-a5c4-471373558bd9" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="652,3255" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dtSOARequestsLoop]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="590,3140" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="556,2954" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="strStraightDateLoop" />
+                      <Variable x:TypeArguments="x:String" Name="strNotariedByLoop" />
+                      <Variable x:TypeArguments="x:String" Name="strPreparedByLoop" />
+                      <Variable x:TypeArguments="x:String" Name="strCertifiedByLoop" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="514,457" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                      <ui:MultipleAssign.AssignOperations>
+                        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[strFHACaseNoLoop]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[CurrentRow.Item("FHA").ToString]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[io_strFHACaseNoModLoop]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[CurrentRow.Item("FHA").ToString.Replace("-","")]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[strRequestedStatusLoop]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[CurrentRow.Item("Requested").ToString]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[strNotesLoop]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[CurrentRow.Item("Notes").ToString]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[strNotesDateLoop]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(strNotesLoop, "\d{1,2}/\d{1,2}/\d{4}").Value]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[strTodayDateLoop]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[Now.ToString("MM/dd/yyyy")]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[strStraightDateLoop]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[Now.ToString("yyyyMMddHHmmss")]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[io_strRequesterLoop]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[CurrentRow.Item("Requester").ToString]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:Int32">[out_intRowCounter]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:Int32">[intRowCounterLoop +1]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[strNotariedByLoop]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[CurrentRow.Item("Notarized By").ToString]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[strPreparedByLoop]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[CurrentRow.Item("Prepared By").ToString]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[strCertifiedByLoop]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[CurrentRow.Item("Certified By").ToString]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                        </scg:List>
+                      </ui:MultipleAssign.AssignOperations>
+                    </ui:MultipleAssign>
+                    <If Condition="[strRequestedStatusLoop = &quot;REQUESTED&quot; Or strRequestedStatusLoop = &quot;Requested&quot;]" sap:VirtualizedContainerService.HintSize="514,2369" sap2010:WorkflowViewState.IdRef="If_1">
+                      <If.Then>
+                        <Sequence sap:VirtualizedContainerService.HintSize="480,1956" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="x:String" Name="strPropertyAddressLoop" />
+                            <Variable x:TypeArguments="x:String" Name="strBorrowerNameLoop" />
+                            <Variable x:TypeArguments="x:String" Name="strCoBorrowerNameLoop" />
+                            <Variable x:TypeArguments="x:String" Name="strBorrowerSSNLoop" />
+                            <Variable x:TypeArguments="x:String" Name="strPayoffLetterNameAndPathLoop" />
+                            <Variable x:TypeArguments="x:String" Name="strSFAmtLoop" />
+                            <Variable x:TypeArguments="x:String" Name="strPendDisbLoop" />
+                            <Variable x:TypeArguments="x:String" Name="strPayoffIntAmtLoop" />
+                            <Variable x:TypeArguments="x:String" Name="strPayoffMIPAmtLoop" />
+                            <Variable x:TypeArguments="x:String" Name="strInterestRateLoop" />
+                            <Variable x:TypeArguments="x:String" Name="strPerDiemLoop" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,341" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                            <TryCatch.Try>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Search For Loan.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Search For Loan.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strHERMITHomeURLSearch">[in_strHERMITHomeURLLoop]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strModifiedFHASearch">[io_strFHACaseNoModLoop]</InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </TryCatch.Try>
+                            <TryCatch.Catches>
+                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ActivityAction x:TypeArguments="s:Exception">
+                                  <ActivityAction.Argument>
+                                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                  </ActivityAction.Argument>
+                                  <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope: Update SOA Requests" sap:VirtualizedContainerService.HintSize="484,1247" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[in_strSOARequestsExcelFileLoop]">
+                                    <ui:ExcelApplicationScope.Body>
+                                      <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                                        <ActivityAction.Argument>
+                                          <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                                        </ActivityAction.Argument>
+                                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,1137" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dtSOARequestsLoop]" DisplayName="Lookup Data Table" sap:VirtualizedContainerService.HintSize="388,292" sap2010:WorkflowViewState.IdRef="LookupDataTable_2" LookupColumnName="ID" LookupValue="[CurrentRow(&quot;ID&quot;).ToString]" RowIndex="[RowIndex]">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </ui:LookupDataTable>
+                                          <ui:ExcelWriteCell Cell="[&quot;H&quot;+( RowIndex+3).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_3" SheetName="2024-B" Text="There was no timeline found for this loan." />
+                                          <ui:ExcelWriteCell Cell="[&quot;G&quot;+( RowIndex+3).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_4" SheetName="2024-B" Text="Manual Review" />
+                                          <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Red]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="388,186" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_2" Range="[&quot;G&quot;+( RowIndex+3).ToString]" SheetName="2024-B" />
+                                          <ui:ExcelSaveWorkbook DisplayName="Save Workbook" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="ExcelSaveWorkbook_2" />
+                                          <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[in_strHERMITHomeURLLoop]" Version="V3" />
+                                          <ui:Continue sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Continue_2" />
+                                        </Sequence>
+                                      </ActivityAction>
+                                    </ui:ExcelApplicationScope.Body>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </ui:ExcelApplicationScope>
+                                </ActivityAction>
+                              </Catch>
+                            </TryCatch.Catches>
+                          </TryCatch>
+                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Transaction Page Data For SOA Worksheet.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="438,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Transaction Page Data For SOA Worksheet.xaml">
+                            <ui:InvokeWorkflowFile.Arguments>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strLoanBalanceURLTrans">[in_strLoanBalanceURLLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_TransactionsPageURLTrans">[in_TranactionsPageURLLoop]</InArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_strPrinAmtTrans">[strTranPrinAmtLoop]</OutArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_strIntAmtTrans">[strTranIntAmtLoop]</OutArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_strMIPAmtTrans">[strTranMIPAmtLoop]</OutArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_strSFAmtTrans">[strTranSFAmtLoop]</OutArgument>
+                            </ui:InvokeWorkflowFile.Arguments>
+                          </ui:InvokeWorkflowFile>
+                          <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,341" sap2010:WorkflowViewState.IdRef="TryCatch_3">
+                            <TryCatch.Try>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Download Payoff Letter FC.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Download Payoff Letter FC.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InOutArgument x:TypeArguments="x:String" x:Key="out_strSFAmtDown">
+                                    <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strSFAmtLoop" />
+                                  </InOutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strTransactionsPageURLDown">
+                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TranactionsPageURLLoop" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strPayoffPageURLDown">
+                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strPayoffPageURLLoop" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strPayoffDocArchiveFolderDown">
+                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strPayoffDocArchiveFolderLoop" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strModFHADown">
+                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_strFHACaseNoModLoop" />
+                                  </InArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_strPayoffLetterNameAndPathDown">
+                                    <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strPayoffLetterNameAndPathLoop" />
+                                  </OutArgument>
+                                  <InOutArgument x:TypeArguments="x:String" x:Key="out_strPendingDisbDown">
+                                    <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strPendDisbLoop" />
+                                  </InOutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="io_strNotesDateDown">
+                                    <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strNotesDateLoop" />
+                                  </InArgument>
+                                  <InOutArgument x:TypeArguments="x:String" x:Key="in_strPayoffDateDown">
+                                    <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strPayoffDateLoop" />
+                                  </InOutArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_strIntRateDown">
+                                    <VisualBasicReference x:TypeArguments="x:String" ExpressionText="strInterestRateLoop" />
+                                  </OutArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExtractCurrentRow" />
+                                  <InArgument x:TypeArguments="x:String" x:Key="BreakTriggerScopeInArgument" />
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </TryCatch.Try>
+                            <TryCatch.Catches>
+                              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_3">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ActivityAction x:TypeArguments="s:Exception">
+                                  <ActivityAction.Argument>
+                                    <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                  </ActivityAction.Argument>
+                                  <Sequence sap:VirtualizedContainerService.HintSize="450,338" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope: Update SOA Requests" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" InstanceCachePeriod="3000" WorkbookPath="[in_strSOARequestsExcelFileLoop]">
+                                      <ui:ExcelApplicationScope.Body>
+                                        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                                          <ActivityAction.Argument>
+                                            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                                          </ActivityAction.Argument>
+                                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,950" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dtSOARequestsLoop]" DisplayName="Lookup Data Table" sap:VirtualizedContainerService.HintSize="388,292" sap2010:WorkflowViewState.IdRef="LookupDataTable_3" LookupColumnName="ID" LookupValue="[CurrentRow(&quot;ID&quot;).ToString]" RowIndex="[RowIndex]">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                            </ui:LookupDataTable>
+                                            <ui:ExcelWriteCell Cell="[&quot;K&quot;+( RowIndex+3).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_5" SheetName="2024-B" Text="SOA Worksheet &amp; HERMIT Totals Do Not Match" />
+                                            <ui:ExcelWriteCell Cell="[&quot;G&quot;+( RowIndex+3).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_6" SheetName="2024-B" Text="Manual Review" />
+                                            <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Red]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="388,186" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_3" Range="[&quot;G&quot;+( RowIndex+3).ToString]" SheetName="2024-B" />
+                                            <ui:ExcelSaveWorkbook DisplayName="Save Workbook" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="ExcelSaveWorkbook_3" />
+                                          </Sequence>
+                                        </ActivityAction>
+                                      </ui:ExcelApplicationScope.Body>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:ExcelApplicationScope>
+                                    <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="NGoToUrl_2" Url="[in_strHERMITHomeURLLoop]" Version="V3" />
+                                    <ui:Continue sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Continue_5" />
+                                  </Sequence>
+                                </ActivityAction>
+                              </Catch>
+                            </TryCatch.Catches>
+                          </TryCatch>
+                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Contacts Page Data For SOA FORM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="438,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Contacts Page Data For SOA FORM.xaml">
+                            <ui:InvokeWorkflowFile.Arguments>
+                              <InOutArgument x:TypeArguments="x:String" x:Key="io_strCoBorrowerNameContact">[strCoBorrowerNameLoop]</InOutArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strContactsPageURLContact">[in_strContactsPageURLLoop]</InArgument>
+                              <InOutArgument x:TypeArguments="x:String" x:Key="out_strBorrowerSSNContact">[strBorrowerSSNLoop]</InOutArgument>
+                              <InOutArgument x:TypeArguments="x:String" x:Key="out_strBorrowerNameContact">[strBorrowerNameLoop]</InOutArgument>
+                              <InOutArgument x:TypeArguments="x:String" x:Key="out_strPropertyAddressContact">[strPropertyAddressLoop]</InOutArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strPayoffURLContact">[in_strPayoffPageURLLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strHERMITHomeURLContacts">[in_strHERMITHomeURLLoop]</InArgument>
+                            </ui:InvokeWorkflowFile.Arguments>
+                          </ui:InvokeWorkflowFile>
+                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Read Payoff Letter.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="438,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Read Payoff Letter.xaml">
+                            <ui:InvokeWorkflowFile.Arguments>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strPayoffLetterNameAndPathRead">[strPayoffLetterNameAndPathLoop]</InArgument>
+                              <InOutArgument x:TypeArguments="x:String" x:Key="out_strPayoffIntAmtRead">[strPayoffIntAmtLoop]</InOutArgument>
+                              <InOutArgument x:TypeArguments="x:String" x:Key="out_strPayoffMIPAmtRead">[strPayoffMIPAmtLoop]</InOutArgument>
+                              <InOutArgument x:TypeArguments="x:String" x:Key="out_strPayoffSheetTotalAmtRead">[strPayoffTotalPayoffAmtLoop]</InOutArgument>
+                              <OutArgument x:TypeArguments="x:String" x:Key="out_strPerDiemRead">[strPerDiemLoop]</OutArgument>
+                            </ui:InvokeWorkflowFile.Arguments>
+                          </ui:InvokeWorkflowFile>
+                          <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="438,341" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <TryCatch.Try>
+                              <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="SOA Math.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="334,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="SOA Math.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strPayoffSFAmtFSOA">[strSFAmtLoop]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strTranPrinAmtSOA">[strTranPrinAmtLoop]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strTranSFAmtSOA">[strTranSFAmtLoop]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strTranMIPAmtFSOA">[strTranMIPAmtLoop]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strTranIntAmtFSOA">[strTranIntAmtLoop]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strPayoffIntAmtFSOA">[strPayoffIntAmtLoop]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strPayoffMIPAmtFSOA">[strPayoffMIPAmtLoop]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strPayoffPendingDisbFSOA">[strPendDisbLoop]</InArgument>
+                                  <InOutArgument x:TypeArguments="x:String" x:Key="io_strMathTotalBal">[strWrkshtResltTotBalLoop]</InOutArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_strMathMIP">[strWrkshtResltMIPLoop]</OutArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_strMathSF">[strWrkshtResltSFLoop]</OutArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_strMathPrinc">[strWrkshtResltPrincLoop]</OutArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_strMathInt">[strWrkshtResltIntLoop]</OutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strPayoffTotalPayoffAmtRSOA">[strPayoffTotalPayoffAmtLoop]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_strRequesterFSOA">[io_strRequesterLoop]</InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                            </TryCatch.Try>
+                            <TryCatch.Catches>
+                              <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ActivityAction x:TypeArguments="ui:BusinessRuleException">
+                                  <ActivityAction.Argument>
+                                    <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
+                                  </ActivityAction.Argument>
+                                  <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope: Update SOA Requests" sap:VirtualizedContainerService.HintSize="484,1125" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_strSOARequestsExcelFileLoop]">
+                                    <ui:ExcelApplicationScope.Body>
+                                      <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                                        <ActivityAction.Argument>
+                                          <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                                        </ActivityAction.Argument>
+                                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,1015" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" DataTable="[in_dtSOARequestsLoop]" DisplayName="Lookup Data Table" sap:VirtualizedContainerService.HintSize="388,292" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnName="ID" LookupValue="[CurrentRow(&quot;ID&quot;).ToString]" RowIndex="[RowIndex]">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </ui:LookupDataTable>
+                                          <ui:ExcelWriteCell Cell="[&quot;K&quot;+( RowIndex+3).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="2024-B" Text="SOA Worksheet &amp; HERMIT Totals Do Not Match" />
+                                          <ui:ExcelWriteCell Cell="[&quot;G&quot;+( RowIndex+3).ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="388,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_2" SheetName="2024-B" Text="Manual Review" />
+                                          <ui:ExcelSetRangeColor Color="[System.Drawing.Color.Red]" DisplayName="Set Range Color" sap:VirtualizedContainerService.HintSize="388,186" sap2010:WorkflowViewState.IdRef="ExcelSetRangeColor_1" Range="[&quot;G&quot;+( RowIndex+3).ToString]" SheetName="2024-B" />
+                                          <ui:ExcelSaveWorkbook DisplayName="Save Workbook" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="ExcelSaveWorkbook_1" />
+                                          <ui:Continue sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Continue_1" />
+                                        </Sequence>
+                                      </ActivityAction>
+                                    </ui:ExcelApplicationScope.Body>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </ui:ExcelApplicationScope>
+                                </ActivityAction>
+                              </Catch>
+                            </TryCatch.Catches>
+                          </TryCatch>
+                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="PDF_Form_Filling.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="438,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="PDF_Form_Filling.xaml">
+                            <ui:InvokeWorkflowFile.Arguments>
+                              <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentRow">[CurrentRow]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strBorrowerNameFPDF">[strBorrowerNameLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_BorrowerSSNFPDF">[strBorrowerSSNLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_CoBorrowerNameFPDF">[strCoBorrowerNameLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strFHACaseNoFPDF">[strFHACaseNoLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strPropertyAddressFPDF">[strPropertyAddressLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strTotalBalanceFPDF">[strWrkshtResltTotBalLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strInterestRateFPDF">[strInterestRateLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strTotalInterestFPDF">[strWrkshtResltIntLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strServiceFeeFPDF">[strWrkshtResltSFLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strMIPFPDF">[strWrkshtResltMIPLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strPrincipalFPDF">[strWrkshtResltPrincLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strPayoffDateFPDF">[strPayoffDateLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strStraightDateFPDF">[strStraightDateLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strRequesterFPDF">[io_strRequesterLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strPerDiemFPDF">[strPerDiemLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strSOAPDFFullPathFPDF">[in_strSOAPDFFullPathLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strNotarizedByFPDF">[strNotariedByLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strPreparedByFPDF">[strPreparedByLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strCertifiedByFPDF">[strCertifiedByLoop]</InArgument>
+                            </ui:InvokeWorkflowFile.Arguments>
+                          </ui:InvokeWorkflowFile>
+                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Update Excel.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="438,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Update Excel.xaml">
+                            <ui:InvokeWorkflowFile.Arguments>
+                              <InOutArgument x:TypeArguments="x:Int32" x:Key="RowIndex">[RowIndex]</InOutArgument>
+                              <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentRow">[CurrentRow]</InArgument>
+                              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dtSOARequstsUpdate">[in_dtSOARequestsLoop]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_strSOARequestsExcelFileUpdate">[in_strSOARequestsExcelFileLoop]</InArgument>
+                            </ui:InvokeWorkflowFile.Arguments>
+                          </ui:InvokeWorkflowFile>
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence sap:VirtualizedContainerService.HintSize="376,231" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,143" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Row is complete.&quot;]" />
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="1912, -8, 1936, 1056" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAbxSURBVFhHpZZtTFvnFcf9pWuypg3tmjVrGmLeEoMBG2PaJBDb2CkvyQJpvlXtFqRpmrSXT5s67a3pl0nTptXkhdAklEsCbZdG3VsrVe3AhhBCs3ZDi5ZAo21OA5hAOztNmrXhXj9n//M8j415SUe7I/30P+fh+vzPufcasC03YgF3zkzQ0zITrDLAyPshb3ImVEXTQS/NBDn3RmeClcZ0qHIvX6s/9v/HVIPbfjVU1com2kxcra2k6VovqBQM14sIVBpTAbddt/nsoTb2htlUGgWUWcYQ9dWAR0wFOPcgV8r1VMCj8AOfZ59uufzgyWES00a6sUfm8ww0cTZiuPZViLi/Qp1xrohNbV7m3ZiurXChUSzbIIO/QjDKUBlpE4r73BmdhE5ucys4V/X/HoI3h1EsvYFSjTaa9Kmm8W3aSDXPMJGmxkWTNS4BBaoer3ZhCMfSQ/Azh1FMGWU1z5ipxnIA1hq3kDUbaENlJHMxLmul49XljFDqii35LZnwucMZE4XI3khvo41Uzg1lzc1l7aIrOGO0KV3ZupAycWVLWVjbqnC/tNve/h3/nAmboqk2I7mNNpn57jfoxss9ZMYnKR3i5rskZl4la2QXWecqGcGaYn3LQ5JzHpx5BM5kTcNZ70PlS3uMbUYzjYUq1Fb6dknFxDKvr6YbJ3u0JVE8Kah/bBaYdGkqpU8xzNSLZL3jJ/OtChgxbgzhxjDQYbeqoajVXXAbu3M8LzxGzL4fBjO3io1Z39tSRuN1W+nWpTFp8JeYSd8yPqKqZ65R1T4N8qbwdYqOzsprxM0xst6ugZmLDZUOc85aDi3HEOVJGsG74H5hd4u7ZzdVANb+Jq80ZfCsBOv133TLxkein5AXhhmezso1R3ENh4h3K7PhMk1pljJOMXumpMXm7m42ALm6m4S7p1k8+Ys6ury5lN7b7BTMxGP1siFvV/l0UuLROse1eefv4C5xpC7sFdZZJ5lnS8hagtRwiWFzdTdHXScwwIkmTTO9useLIZwUe8RJN177nWy289kPqeJnyTlglNF0rutvdt6QnxFTJ4R5thhm2TgwlINS0NRQ8Yit/HhTsvz4LkpT1rWLth9spL/7yij2cIm4dWmUxuIWudF8MYnbkKTJJF7MTyZguBGGmiEJMSZInS1K2MqMr8JUImSu659/u5piVcWCN4lcnCXXTxNLA7P5dYLKoRH9QlpDRWSeKSSLQW4NaZV1gbCVdu6kUpiWGjuF1C6lj7Q30vkap2zSd/EWlaHpQtgoW7PP+zA0h3WmAEb5wjoDhgowTD7O5uABks7OHUKxk6BAqvjeUz5hxidoMpGi0p/8+zMxiscmProAkzwyB/Ogdgxhl7XKN3CdsJU8v+OvJR2NpNhBqGXuZH2+UQz2n5SbtHRcJycaO38MWD+Ful9dk59JTZ+CGRvlCnMwlyzJBrBecG4Oro/aHB0NRvGxRpqjQQ7gONYgOP/6a0/JZn/+1yyVwLwYKP1A5nP13HkvHhmH9fYWMk+vBw/B9CHBqnOyWE+vM2yOow0tIGPIyPpovQCsdPy8+ioe6rtJjh99QA6YSF0Izg/1/kdee228E4brYLYO2z6I/EGYK6y0Dqzba7MbgZziI/XJTUfqKRsH69E6wXi79ojR9/8hG//pwi0K/jJJm2CYzdeOfUjn/qlevInEu5QYLCFz4CuatTBdK9JqnX5A5hTNUX+WNz1X37rpuTraqJH5kTqRroHwGntE1/nfSgOOi5OWHIaZwEuaDr6m849bsN1aGD+QwWLt/7JUa2CNsPrXGNKcw9HeYN/Y/igxRVrTeRaisH27CPQ8Sa+MvkEX9R3hGL9+lYy/vUJP/P4H5O/wwWiNYkBr//0ytwbuFzIH2H7+f0ZFbaHWosPbKU1hG+ujxKaFhyWkNCT4ZxldwKk/FMHkS8pU6n3YVipZyFlTA/ct/k/ZHg7kFBwOxQraVOOCQyEqBKx8JpXP2ubX2Tze9TDM7hVm9F4YAlaAM605wormxLTl4sAQ9oK2YCzdMP9gkApA/qGgkHCu66XOL7+JZxxdjQHuAathuBqGUNSa2KJbvzB4iPwDtTHZ9EAt5R2sFQznafJY8XNWmR8I0ve7y8mM3I1N71EKrOgqmK4SnM9G7ob5ik83TwcPkbe/NgbIfiAg8vYHpMochvb9Kk9T076VLr+B5xxZxabQu+ZhRe6Kfbxc8+zAIM/YW2F+W/wYxi86Xs4ns28ljL4oMSMrBNdmBPStDGe+758n+G7khv3GhrCfNrT6Re6zPsF5btgn6+q2zTBZobmTzF4QuTNp9q5s/fj1z7H17QKD5Kz/9bYWDNCFAaLQJKCTp/A7PXJHItX7hZFU7wpjtu+OluVvbLP9F5lmWAkTeM7rAAAAAElFTkSuQmCC" InformativeScreenshot="d4450579d10afa3f1b946f21de5786d0.jpg" Selector="&lt;html app='chrome.exe' title='Home' /&gt;" Title="Home" Url="[in_strHERMITHomeURLLoop]" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

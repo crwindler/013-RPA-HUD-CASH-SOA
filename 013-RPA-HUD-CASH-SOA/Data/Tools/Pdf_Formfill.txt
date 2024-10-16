@@ -1,0 +1,84 @@
+Param 
+(
+    [Parameter(Mandatory=$true)][string]$DllPath,
+    [Parameter(Mandatory=$true)][string]$InputFile,
+    [Parameter(Mandatory=$true)][string]$OutputFile,
+    [Parameter(Mandatory=$false)][string]$in_strFHACaseNoFPDF,
+    [Parameter(Mandatory=$false)][string]$in_strBorrowerNameFPDF,
+    [Parameter(Mandatory=$false)][string]$in_CoBorrowerNameFPDF,
+    [Parameter(Mandatory=$false)][string]$in_BorrowerSSNFPDF,
+    [Parameter(Mandatory=$true)][string]$in_strPropertyAddressFPDF,
+    [Parameter(Mandatory=$false)][string]$in_strTotalBalanceFPDF,
+    [Parameter(Mandatory=$false)][string]$in_strInterestRateFPDF,
+    [Parameter(Mandatory=$false)][string]$in_strPrincipalFPDF,
+    [Parameter(Mandatory=$false)][string]$in_strTotalInterestFPDF,
+    [Parameter(Mandatory=$false)][string]$in_strServiceFeeFPDF,
+    [Parameter(Mandatory=$false)][string]$in_strMIPFPDF,
+    [Parameter(Mandatory=$false)][string]$in_strPayoffDateFPDF,
+    [Parameter(Mandatory=$false)][string]$in_strPerDiemFPDF,
+    [Parameter(Mandatory=$false)][string]$in_strNotarizedByFPDF,
+    [Parameter(Mandatory=$false)][string]$in_strPreparedByFPDF,
+    [Parameter(Mandatory=$false)][string]$in_strCertifiedByFPDF,
+    [Parameter(Mandatory=$false)][string]$strTodayDateFPDF
+)
+
+
+
+
+try {
+    if (-Not (Test-Path -Path $DllPath)) {
+        Throw "DLL Path not found: $DllPath"
+    }
+
+    if (-Not (Test-Path -Path $InputFile)) {
+        Throw "Input file not found: $InputFile"
+    }
+
+    if (-Not (Test-Path -Path (Split-Path -Path $OutputFile -Parent))) {
+        Throw "Output folder not found: $(Split-Path -Path $OutputFile -Parent)"
+    }
+
+    [System.Reflection.Assembly]::LoadFrom($DllPath) | Out-Null 
+    $PDFDoc = New-Object iTextSharp.text.pdf.PdfReader -ArgumentList $InputFile
+    $PDFDoc_ = New-Object iTextSharp.text.pdf.PdfStamper($PDFDoc,[System.IO.File]::Create($OutputFile))
+
+    $fields = @{
+        "3" = $in_strFHACaseNoFPDF
+        "4" = $in_strFHACaseNoFPDF
+        "5" = $in_strBorrowerNameFPDF
+        "6" = $in_BorrowerSSNFPDF
+        "7" = $in_CoBorrowerNameFPDF
+        "10" = $in_strPropertyAddressFPDF
+        "12" = $in_strPrincipalFPDF
+        "14" = $in_strInterestRateFPDF
+        "23" = $in_strPrincipalFPDF
+        "24" = $in_strTotalInterestFPDF
+        "26" = $in_strServiceFeeFPDF
+        "29" = $in_strMIPFPDF
+        "36" = $in_strPrincipalFPDF
+        "37" = $in_strTotalInterestFPDF
+        "38" = $in_strServiceFeeFPDF
+        "43" = $in_strMIPFPDF
+        "31" = $in_strTotalBalanceFPDF
+        "31a" = $in_strPayoffDateFPDF
+        "47" = $in_strTotalBalanceFPDF
+        "47a" = $in_strPayoffDateFPDF
+	"49" = $in_strPerDiemFPDF
+        "50a" = $in_strPreparedByFPDF
+	"50c" = $strTodayDateFPDF
+	"51a" = $in_strCertifiedByFPDF
+	"51c" = $strTodayDateFPDF
+	"61" = $in_strNotarizedByFPDF
+    }
+
+    foreach ($key in $fields.Keys) {
+        $PDFDoc_.AcroFields.SetField($key, $fields[$key]) | Out-Null
+    }
+
+    # Keep the form fields editable
+    $PDFDoc_.FormFlattening = $false
+    $PDFDoc_.Close()
+}
+catch {
+    Write-Error "An error occurred: $_"
+}

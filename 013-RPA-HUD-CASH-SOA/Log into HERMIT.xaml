@@ -1,0 +1,373 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Add_Loan_Notes" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_stCDriveVaultExcelPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_strDDriveVaultExcelPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_strHERMITHomeURL" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Add_Loan_Notes.in_stCDriveVaultExcelPath>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Add_Loan_Notes.in_stCDriveVaultExcelPath>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1246,3687</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Add_Loan_Notes_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.Shared.ObjectLibrary</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
+      <x:String>System.Security</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.Process</AssemblyReference>
+      <AssemblyReference>Microsoft.PowerShell.Commands.Diagnostics</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.FileVersionInfo</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.DiagnosticSource</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.EventLog</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.PerformanceCounter</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.TextWriterTraceListener</AssemblyReference>
+      <AssemblyReference>System.Diagnostics.TraceSource</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Goes to HERMIT login page and adds the user's username and password, selects text for the 2 factor authentication, and waits for the user to enter the authentication code." DisplayName="Log into HERMIT" sap:VirtualizedContainerService.HintSize="1112,3622" sap2010:WorkflowViewState.IdRef="Sequence_5">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Default="chrome" Name="strKillProcess" />
+      <Variable x:TypeArguments="x:String" Name="strPasswordLog" />
+      <Variable x:TypeArguments="x:String" Name="strUserNameLog" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message: Sequence has begun." sap:VirtualizedContainerService.HintSize="1050,141" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;The 'Log into Hermit' has begun.&quot;]" />
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1050,994" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+      <TryCatch.Try>
+        <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="Reads the Credential Vault in to seperate data tables" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope: Read Vault Data" sap:VirtualizedContainerService.HintSize="546,766" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[in_strDDriveVaultExcelPath]">
+          <ui:ExcelApplicationScope.Body>
+            <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+              </ActivityAction.Argument>
+              <Sequence sap:VirtualizedContainerService.HintSize="512,625" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,333" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ExcelReadCell sap2010:Annotation.AnnotationText="Reads cell 'B2' which contains the username." Cell="B2" DisplayName="Read Cell: Username" sap:VirtualizedContainerService.HintSize="388,91" sap2010:WorkflowViewState.IdRef="ExcelReadCell_3" SheetName="Vault">
+                    <ui:ExcelReadCell.Result>
+                      <OutArgument x:TypeArguments="x:String">[strUserNameLog]</OutArgument>
+                    </ui:ExcelReadCell.Result>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ExcelReadCell>
+                  <ui:ExcelReadCell sap2010:Annotation.AnnotationText="Reads cell 'B3' which contains the password." Cell="B3" DisplayName="Read Cell: Password" sap:VirtualizedContainerService.HintSize="388,91" sap2010:WorkflowViewState.IdRef="ExcelReadCell_4" SheetName="Vault">
+                    <ui:ExcelReadCell.Result>
+                      <OutArgument x:TypeArguments="x:String">[strPasswordLog]</OutArgument>
+                    </ui:ExcelReadCell.Result>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ExcelReadCell>
+                </Sequence>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="450,141" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;The user was logged in with the 'D' Drive Vault Credentials.&quot;]" />
+              </Sequence>
+            </ActivityAction>
+          </ui:ExcelApplicationScope.Body>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:ExcelApplicationScope>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="550,21" sap2010:WorkflowViewState.IdRef="Catch`1_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap:VirtualizedContainerService.HintSize="546,766" sap2010:WorkflowViewState.IdRef="Sequence_14">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="Reads the Credential Vault in to seperate data tables" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope: Read Vault Data" sap:VirtualizedContainerService.HintSize="484,474" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" InstanceCachePeriod="3000" WorkbookPath="[in_stCDriveVaultExcelPath]">
+                <ui:ExcelApplicationScope.Body>
+                  <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,333" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:ExcelReadCell sap2010:Annotation.AnnotationText="Reads cell 'B2' which contains the username." Cell="B2" DisplayName="Read Cell: Username" sap:VirtualizedContainerService.HintSize="388,91" sap2010:WorkflowViewState.IdRef="ExcelReadCell_5" SheetName="Vault">
+                        <ui:ExcelReadCell.Result>
+                          <OutArgument x:TypeArguments="x:String">[strUserNameLog]</OutArgument>
+                        </ui:ExcelReadCell.Result>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:ExcelReadCell>
+                      <ui:ExcelReadCell sap2010:Annotation.AnnotationText="Reads cell 'B3' which contains the password." Cell="B3" DisplayName="Read Cell: Password" sap:VirtualizedContainerService.HintSize="388,91" sap2010:WorkflowViewState.IdRef="ExcelReadCell_6" SheetName="Vault">
+                        <ui:ExcelReadCell.Result>
+                          <OutArgument x:TypeArguments="x:String">[strPasswordLog]</OutArgument>
+                        </ui:ExcelReadCell.Result>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:ExcelReadCell>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ExcelApplicationScope.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:ExcelApplicationScope>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,141" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;The user was logged in with the 'C' Drive Vault Credentials.&quot;]" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: HERMIT Login" sap:VirtualizedContainerService.HintSize="1050,2084" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="5fd6a36c-d1ca-4f6d-8dfa-eeb0b3e5affd" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1016,1867" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NCheckState sap2010:Annotation.AnnotationText="Checks to see if you are already logged into HERMIT and if you are then it just keeps you logged in, otherwise it logs you into HERMIT" DisplayName="Check App State 'Home'" sap:VirtualizedContainerService.HintSize="954,1752" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="5fd6a36c-d1ca-4f6d-8dfa-eeb0b3e5affd" Timeout="0.5" Version="V3">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,105" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,1504" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Username'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="5fd6a36c-d1ca-4f6d-8dfa-eeb0b3e5affd" Text="[strUserNameLog]" Version="V3">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/auth/login.aspx" CvElementArea="870, 424, 259, 22" CvType="InputBox" DesignTimeRectangle="872, 425, 256, 20" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT ctl00_ContentPlac…'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='text' tag='INPUT' class='' aaname='User Name:' /&gt;" Guid="cae621c6-0e44-490e-a63b-2ec329ae643a" InformativeScreenshot="5bc32889feafb9fc91f05407a48c3aa1.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Login' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target CvElementArea="1056, 478, 74, 34" CvTextArea="1074, 488, 37, 16" CvTextArgument="Login" CvType="Button" DesignTimeRectangle="1053, 475, 80, 40" ElementType="InputBox" FriendlyName="'INPUT ctl00_ContentPlac…'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='INPUT' type='image' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl class='' tag='INPUT' type='image' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFQAAAAsCAYAAAD7Gp9tAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAhgSURBVGhD7Zrbb1RVFMYH3kh48cG3xlflmT9AE8UbCILIRVQQbBBRo5nEGNFEjUJMBB/0wcJQhHBpaYFSoaWFofSCpRdqS+1AuRbaUmgpQ2+UlsLy+/bsXfacOVNaD4hMZydfTvdZe6/T9TtrX+ac45NkeaAlCfQBlyTQB1xGDfTu3btxdefOnYSVW7xGbuW+QE1nc4GhoaFh3b59e9zIjtsJ2y4jAjUgDbzBwUEZGBhQunXrlvT3948bMV6KsZODgWzAmhIXqA2TDujs5s2b0tvbKz09PdLd3S1dXV1y48aNhBfjZLyMm/GTA3mQixOqK1ADk3fhzJUemf1rjUxeUSi+pfnjTox71i/Hpa7purS3t8u1a9ckHA4ruATLjCUnAzUGqJ2ZZ9u75Zm1RZLyc4VM+a1epm4KydR0yBxj1HBPzrZRx8fHPiWtXlLWHZOn1gSl9mK7XLp0Sdra2hRYZm5fX5+CajLVFagZ5rM310jKTxXy5M+1MvGHavFR31vHkeRs+5geJ66ulifX1UrK2gqZ+Xu1hEIhOXv2rDQ3N6uMJVRmqhn+UUDtoc45YvKqQnnixxrxfQfn41zkMOnLAjl27JjU1dXJ6dOnFVRmKoc/eZGbK1DSJnWfP18mfguH3ySlOIDHwYMH5ejRowoqM5XDnwuXydIYoExbzglczXyfYmL+Go6Sigg8cnJyFFRmKoc/59TOzk7Fi9xcgTJ9mca+TwB0FRwlFRF47NixQ/bt2yclJSUqSy9cuKDmUjPs4wLlvsv3EYB+AUdJRQQemzdvlt27d0swGJTjx4+rYX/lyhW1OMUANdsl/jJgA9+HAPo5HCUVEXhs3LhRsrKypLCwUKqqqtTixHmUvMgtBihXKho40fqWA6i/CoKzUYltjazzH/8hviX4YRDVzrLHaAz2T+F33k4c49hdNVa7ri/Pkw0bNkhmZqYcOHBAKisrpbGxUS5fvqx43R9oKoB+BkdeVd4j0tcpfjebV+V0S1iGJJjjYnvQAo/169dLRkaG5OfnS0VFxRiBLgPQT+DIq/7UQN1sRqnIsjlpWsho27YSWWjb2HYRzg3bUF/JtsWRv1PRJp4vLwIPAuXCRKBc6U+dOjUGoO8B6EdwZPSx9fdoxT5HNVBTd9qX7RR//aD+L1i6JDAbIJQdkNJbkYWm9EqwfuCev+xO2AYlmEV/bRKSAQk29Oq2LGEJLIYP+3rm77HWwSMtLc0D0HcBdAUceVUZgPYCgJttRbH4TwCQ9EtAn/M33kYdIJaUA/ZFQEKtsTnSPotDHMX426mB7mRfAkXp69bXapZgH+qtLZG+XgUe3oC+DaDL4cjoA+vv0Yp9SjVQU7ftqS0KQqhM15U9AiIcahJfSRcAhSN9tT1wGR2Mv0wNNJP2CNBQqW4L+UPIfNNW9ze2MdfBwxvQRQD6PhylQm7HkWS3LdFAned5zNBAMqLPB1oBtKFJ/A0A0toW1U+dM/6i+mugJZF2bD/c1ur/r49veQW6EECXwtEyS866LdqM7PPFGqjdzvydEQYQzHvbrHNLyyXQooEyw1owZI0N8v+NKcL4266BbqdNAy222hqguq7k/P9GW1/gFeg8AF2MPdgSOFsM2Uc3sa2RquvzRzRQu92wvSMCoQCLkLHPr5Ug1pVwCPNmKcZ+T6v4F2A+pe2dQglcQgf6Y/9tGihvyBIN9Mg9//6/NVDjW513/H/m6LQ762/meQQ6F0DfgaN3Rym2NbLPEyihvIhtjK2Z2PLA7g8N4epY2fV5fy0gcJFS/SPAw7UASvtvHQCI0ot5lfatGuhWttVAi/R16dsA1XWl+8XktJs6eHgDOgdAF8GRVxX36ys4Cldj3cbfQKimAKbdf6te2VXpx7aJ0wDm1WEbNvYEukhnO4e87qv8WtfxJPDwBvR1AF0IR49SczEVPA8Nn8M26y/MoS0d1rn/SODhDehrADoPjh6lipjd2JM+h+GudPLesHZr/zAFHt6ATgfQuXD0iMUV3y6hw+7tHrrAwxvQVwB0NhwlFRF4eAP6EoDOgqOkIgIP++EInzaNDegLADoDe7AZcDYqsa2Rm93ocbPr+gt5w4/v+Dx0zI/vJk/HPvFVOHsVzsa9qmTSKwUSCATUA+aCggL1gNk8sY8L1H4FMmtVtUyYVopUh0PqZcdxNHL2cfb9v9odR3J446tySU9PV69A+Oazurpazpw5M/xOKQao8yVd6NxVeRq/X33P5iHdK/FLBc6nQeY4kpxtH9fjtEqZgPhTZu6S7NxDsmXLFtmzZ48cPnxYampq5Ny5c3L16lXFa8S3nnwt2tHRIXWnL8qs1XkyacFG6yn4+BHjnr9mr2TsypVNmzap4b5//34pLS2VEydOSFNTk+JEXnHfy5sPHfgCn5+bnDx5Uk3Ahw4dkr174RyTMu8U059zCidqiluKRJGJifExTsZLmLm5ueoVMudPrvAtLS2KEz8ac/1yhPOo+RSHEy3nB6Y170Z5eblyxjvEtOdcwosQMLcSiSbGxfiys7PVFyOMm/GTQ319vZw/fz5q/uSCHgOUosEMe9LnXeDkS6jMVKY75xBOzFztuIXgvizRxLgYH+MsKiqSsrIylZmEyQ8cWltboz7D4eiOAspiZ6lZ7TlHECozlcOfYDkh80U/L0DI/NWQaGJcjI+rOeNl3BzmzEzC5Jd3XIzIibzILS5QM5dy6LMT7wTTm3Mqv+fhHeIejBtbihdKNJnYODqZTFyAmFjkQB7kYn8bSnYxQFmcUHkHOPw5p9IRM5ZbBW5oKf5SSFQxPgJkvIz7+vXratRymJvMJCfyiguUxYbKTpxTeTe4mhEu7w4dE3IiizFSjJdxM36CZKI5YYqI/APtzykHR+VD1QAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector, CV" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NTypeInto.Target>
+                  </uix:NTypeInto>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Password'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="5fd6a36c-d1ca-4f6d-8dfa-eeb0b3e5affd" Text="[strPasswordLog]" Version="V3">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/auth/login.aspx" CvElementArea="871, 449, 259, 22" CvType="InputBox" DesignTimeRectangle="872, 450, 256, 20" DesignTimeScaleFactor="1" ElementType="InputBoxPassword" FriendlyName="'INPUT ctl00_ContentPlac…'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='INPUT' type='password' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl class='' tag='INPUT' type='password' aaname='Password:' /&gt;" Guid="c33dcdac-293b-40f6-93b3-afaf5e2ed0a6" InformativeScreenshot="a2e48c82a9aa471d1399b516911a9c20.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Login' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target CvTextArea="800, 453, 68, 13" CvTextArgument="Password:" CvType="Text" DesignTimeRectangle="794, 453, 75, 15" ElementType="Text" FriendlyName="'Password'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Password:' tableRow='1' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Password:' type='' tag='LABEL' class='headerLabel' check:innerText='Password:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAE8AAAATCAYAAADReFAKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHLSURBVFhH7ZUxSgRBEEU9iUcw9wSGHkBQDEXMDARDBTMVjEQwEAzEwMDQzMTACwhi6EaKgaAYtbxhnxS9vaI7q6tLf2hmq6r716+/PcxEqhgY1bwWqOa1QDWvBb5s3tbuaZqcWuxZV9c33R3jgZfXt7Sytp9m5zbS49NzN1vGt8ybnllNt3edJrZJzI0DfsU8wK3j9p2cXXYz/x8jM49mNPWVjgI+qwE4rLHkzHsYMyCDyos+gD50ymMeuHdheadZziMna33zqMc8tbEvYmivrbFDOYTieSoorxlrUOyVm+Mgcjk4z5zXs7nRcpf2yCc/GIp5EMQVRQjFuMdB4vlchENTc4gIzsJ533lo6pGHwdQRf4uYy40CmsU+QJ56NK8fWr22ETZViIZonrGDR8EgmsuK4h3w8Pii4dg7OG/qxPTUjJJGenAWjpJ5sQ5GYl4/s4wjFFzic0DqnjU3v7T9cYYae1j+CTxzzpgrmfcnbh556vEWaEBJEHnjfAC5jIF8nqFGHDV5jr0gNyuPS3vUYh9gL2+nGJp5wCYsv2iK0kDrOZeiXRog5DavUdEIYL7EUzIPxDM/8rWt6EU1rwWqeS1QzWuBat7ASOkdzdN6W5YM8UoAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, CV" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NTypeInto.Target>
+                  </uix:NTypeInto>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Login'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5fd6a36c-d1ca-4f6d-8dfa-eeb0b3e5affd" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/auth/login.aspx" CvElementArea="1056, 478, 74, 34" CvTextArea="1074, 488, 37, 16" CvTextArgument="Login" CvType="Button" DesignTimeRectangle="1053, 475, 80, 40" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT ctl00_ContentPlac…'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='INPUT' type='image' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl class='' tag='INPUT' type='image' aaname='' /&gt;" Guid="c015789d-187c-4021-ab9d-525302eefe0d" InformativeScreenshot="1bd2118ab71bd37aedc802006303283b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Login' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Text Option'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5fd6a36c-d1ca-4f6d-8dfa-eeb0b3e5affd" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/auth/login.aspx" CvElementArea="723, 632, 19, 20" CvType="Icon" DesignTimeRectangle="724, 635, 16, 16" DesignTimeScaleFactor="1" ElementType="RadioButton" FriendlyName="'INPUT ctl00_ContentPlac…'" FullSelectorArgument="&lt;webctrl aaname='*' tag='INPUT' type='radio' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Text:*' tag='INPUT' type='radio' class='' /&gt;" Guid="92cebbc7-3c21-4eec-ab58-ee33bb0e4008" InformativeScreenshot="bdc56eb33572c66286ad41980399535c.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Login' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target CvTextArea="878, 464, 175, 13" CvTextArgument="Multi-Factor Authentication" CvType="Text" DesignTimeRectangle="671, 463, 590, 17" ElementType="Text" FriendlyName="'Multi-Factor Authentica…'" FullSelectorArgument="&lt;webctrl idx='3' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='hermit-modal-title' aaname='Multi-Factor Authentication' check:innerText='Multi-Factor Authentication' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAlIAAAAVCAYAAACNHQCOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPVSURBVHhe7do9buMwEIbhvcDeaW+UPvfIAXKDVKnTpXNtuHPn0oCBtFpS4kjDIUVKNLXbvAQeYG1Jwx8HmA/2/vr952UAAADAfgQpAACARgQpAACARgQpAACARgQpAACARgQpoJP36zCP86e69nkL77px/Y6eWfV2Ge7F+7+Hs7/+uAyv2evxeqKxdQ3/xcfw9QjrLOxtj+kcfoavt/z13l5PP+Pyo7+BTo6sDaANQQroRAeX++kj+/4zQco30aWBbg1SRwUIN3+noBORfY+jce2+hjq344NUfBZ9w86RtQH0QJACOokC09z8wjcsj5/KN0yGCVItDfS4AFEPca3mfV6nb/F0IN0kE0APD5S+/BGh8tDaAHohSAGdSMM+X30YCI07NPa7CwZRg08avmma+rr+adCP8Zl6k60HiFBjHrfhXV+XNcgY51U/vY1jqS8hSEYU+ub93MKcZq6R1PbXVvZXPLf8fuQc7mrdNqBN94Sh55znu6h9y57zZ5GGXrOuaE9r59mjtvobODX8vAxgE4IU0IltWmOzG0OQe+/TBIBiIEivrzZQ0zi1cpAKjXplvuR1CHNTAEnnTtYX3a/qZQNUYObMrt+uq3JuS51lLbZu/DrUs+cg667N78RnUV7fNLecia21s3YURKf7a3sH8DyCFNDJ0qRCg3PNcm6UtgHXGrK53h6k7LBNNNSRsTpf5hnbwKO1VIJaRjWMeTvPzbPhoRxG5P6twSl9Pqqf20PCfPu0s3b0GZn3ynsH0ANBCuhkaVoSItT/i7INeWcgSBtg2mQt20RjS/Mem7yZr/xsPUwk344k+7XM/Z48o+vuPDevHCbC88kI99fmy+xd168Fl2ltboz1O9Q2wa28dwA9EKSATnTTkoblRy6o7A0EaQOM79fzSRgphqHKesoN1zZ4CY5Lw0/eS/ZryPXsUHtI6pTPzdsUpKK1K7X5Ms9H9YvfSNVqbasdfUZ8IwX8cwQpoJOoaYWGNr+uNWS5X17b+5OmmTZZa1OQCs9P97oh89n5w+spEKTBKWnQYb1zgEj2H5PnbeBI36+cm1xX89TCRHzd1E/Wbc+9dhb2fr2+8O8QfOW59trhfvWtXm3vAJ5HkAI62deQVeN04366VO6XpuvGeI9toinbRC09//C4DWfTtOc1yFhZuzTlqJ4bUbMuBikJAJm1ynNqXcVzc6Z9+zHV2xImlmf8yPy8aD+HlfX4mml99dn5oc94Dtx+uM9gXMcy/1O1nS17B/AcghQAAEAjghQAAEAjghQAAEAjghQAAEAjghQAAEAjghQAAECTl+Evlo3JqejCeMkAAAAASUVORK5CYII=" SearchSteps="Selector, FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Submit'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5fd6a36c-d1ca-4f6d-8dfa-eeb0b3e5affd" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/auth/login.aspx" CvElementArea="890, 670, 74, 34" CvTextArea="903, 680, 47, 13" CvTextArgument="Submit" CvType="Button" DesignTimeRectangle="887, 667, 80, 40" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT ctl00_ContentPlac…'" FullSelectorArgument="&lt;webctrl name='ctl00$ContentPlaceHolder1$btnTwoFactorSelectSubmit' tag='INPUT' type='image' /&gt;" FuzzySelectorArgument="&lt;webctrl name='ctl00$ContentPlaceHolder1$btnTwoFactorSelectSubmit' tag='INPUT' type='image' class='' aaname='' /&gt;" Guid="389c867f-7e48-456a-ae0f-3352772f0664" InformativeScreenshot="162c7ef848eae6d8453502ac4c9c3171.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Login' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="ALERT" sap:VirtualizedContainerService.HintSize="388,85" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Click 'OK' after you have successfully logged into HERMIT.&quot;]" />
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Home'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5fd6a36c-d1ca-4f6d-8dfa-eeb0b3e5affd" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/default.aspx" CvElementArea="15, 208, 16, 16" CvType="Icon" DesignTimeRectangle="18, 210, 10, 12" DesignTimeScaleFactor="1" FriendlyName="'I'" FullSelectorArgument="&lt;webctrl tableRow='21' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='I' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='I' class='fa fa-home' aaname='' /&gt;" Guid="988a1e45-a7a8-4dee-8854-7eb14c25651f" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAYAAAAmlE46AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADxSURBVDhPY5h55v9/cvBg0njo2v+M0qX/a/YD2dv2/o/M6/mfvOw7XB67xj17/3uZKP7XCUz+rySb/D+uIvs/AwPDf8PW53A1GBqnrJnz30zY8r9D09b/cXHV/5O7e/7rCDPg19janf1fSTjqf+TUtf+9dCGKGUA29i397wDka+Sd+z8FVeP3/zWlXv9FTFBtQGCgC+rW/o/0kvivFLX1fzdCI9CJm879b53R818ERQMylvjv0Hftf+smSACh+nF+C0Jh4JT/hTP2/s9IcYKL4Q4cZI0Zx8Bi3a1BRGhc1PKfD49Gh773ODSSgIeMxv//AdxSg2RYf05vAAAAAElFTkSuQmCC" InformativeScreenshot="7154b107884e340aaae564975fa19c6f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Home' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/default.aspx" CvTextArea="26, 164, 38, 13" CvTextArgument="Home" CvType="Text" DesignTimeRectangle="28, 164, 36, 15" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Home'" FullSelectorArgument="&lt;webctrl id='mainTable' tag='TABLE' /&gt;&lt;webctrl aaname='Home' tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl id='mainTable' tag='TABLE' /&gt;&lt;webctrl aaname='Home' type='' tag='SPAN' class='' check:innerText='Home' /&gt;" Guid="42b9e793-b561-4ba1-b06b-919b17f4ca95" InformativeScreenshot="1988f7b3f54829bf6aec0f81994c56fe.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Home' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+              </uix:NCheckState.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NCheckState>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1936, 1056" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="989cf11da02d12f82cef05f7d1db015d.jpg" Selector="&lt;html app='chrome.exe' title='Login' /&gt;" Title="Login" Url="[in_strHERMITHomeURL]" />
+      </uix:NApplicationCard.TargetApp>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uix:NApplicationCard>
+    <ui:LogMessage DisplayName="Log Message: Completion of sequence" sap:VirtualizedContainerService.HintSize="1050,141" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;The 'Log into Hermit' has completed successfully.&quot;]" />
+  </Sequence>
+</Activity>

@@ -1,0 +1,414 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Submit_Loan_Notes" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_strHERMITHomeURLSearch" Type="InArgument(x:String)" />
+    <x:Property Name="in_strModifiedFHASearch" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Submit_Loan_Notes.in_strModifiedFHASearch>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Submit_Loan_Notes.in_strModifiedFHASearch>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1348,3967</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Submit_Loan_Notes_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Creates the loop that goes row by row throughout the excel file and enters the data into HERMIT. &#xA;" DisplayName="Submit_Loan_Notes" sap:VirtualizedContainerService.HintSize="1358,3902" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1296,141" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;The 'Search For Loan' sequence has begun.&quot;]" />
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1296,3568" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Home" sap:VirtualizedContainerService.HintSize="1258,3340" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="88cd1786-7c22-4aa7-b747-51643e03f0f5" Version="V2">
+          <uix:NApplicationCard.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1224,3123" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="2" DelayBefore="2" DisplayName="Click 'Loan'" sap:VirtualizedContainerService.HintSize="1162,193" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="88cd1786-7c22-4aa7-b747-51643e03f0f5" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/default.aspx" CvTextArea="40, 207, 31, 12" CvTextArgument="Loan" CvType="Text" DesignTimeRectangle="8, 198, 230, 32" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Loan'" FullSelectorArgument="&lt;webctrl tableRow='21' tag='TABLE' /&gt;&lt;webctrl class='w1' tableRow='1' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl class='w1' type='' tag='A' aaname='                                                                                                     Loan' check:innerText='Loan' /&gt;" Guid="12300472-b082-4160-b577-ae6cde5e915a" InformativeScreenshot="9c51e9f4fabee1da7316f8d62b775971.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Home' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+                  </uix:NClick.Target>
+                  <uix:NClick.VerifyOptions>
+                    <uix:VerifyExecutionOptions DisplayName="Label 'Loan Search'" Mode="Appears">
+                      <uix:VerifyExecutionOptions.Retry>
+                        <InArgument x:TypeArguments="x:Boolean" />
+                      </uix:VerifyExecutionOptions.Retry>
+                      <uix:VerifyExecutionOptions.Target>
+                        <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loansearch.aspx" CvTextArea="319, 235, 107, 17" CvTextArgument="Loan Search" CvType="Text" DesignTimeRectangle="320, 231, 1569, 30" DesignTimeScaleFactor="1.25" ElementType="Text" FriendlyName="'Loan Search'" FullSelectorArgument="&lt;webctrl tableRow='20' tag='TABLE' /&gt;&lt;webctrl class='hermit-subHeading' tableRow='1' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl class='hermit-subHeading' type='' tag='DIV' aaname='Loan Search' check:innerText='Loan Search' /&gt;" Guid="2f2a7ffd-de22-4615-a098-e16f0ce83c50" InformativeScreenshot="8e92732db62169043393afbbcc315853.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan Search' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+                      </uix:VerifyExecutionOptions.Target>
+                      <uix:VerifyExecutionOptions.Timeout>
+                        <InArgument x:TypeArguments="x:Double" />
+                      </uix:VerifyExecutionOptions.Timeout>
+                    </uix:VerifyExecutionOptions>
+                  </uix:NClick.VerifyOptions>
+                </uix:NClick>
+                <ui:RetryScope DisplayName="Retry Scope Type into 'FHA CASE #'" sap:VirtualizedContainerService.HintSize="1162,504" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="2" RetryInterval="00:00:01">
+                  <ui:RetryScope.ActivityBody>
+                    <ActivityAction>
+                      <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="450,329" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DelayAfter="2" DisplayName="Type Into 'FHA Case #'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="388,218" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="88cd1786-7c22-4aa7-b747-51643e03f0f5" Text="[in_strModifiedFHASearch]" Version="V3">
+                          <uix:NTypeInto.Target>
+                            <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loansearch.aspx" CvElementArea="459, 272, 242, 22" CvType="InputBox" DesignTimeRectangle="461, 273, 240, 20" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT ctl00_loanHeader_…'" FullSelectorArgument="&lt;webctrl tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='16' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl class='igte_CaribbeanEdit' tag='INPUT' type='text' aaname='' /&gt;" Guid="dd1fcb38-0aac-430c-b679-aafb71acda44" InformativeScreenshot="f0e41f48fa920f007d3a1266d82c38e5.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan Search' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                  <uix:Target CvTextArea="256, 276, 79, 13" CvTextArgument="FHA Case #:" CvType="Text" DesignTimeRectangle="256, 271, 202, 24" ElementType="Text" FriendlyName="'FHA Case #'" FullSelectorArgument="&lt;webctrl tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='16' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='headerLabel' aaname='                                             FHA Case #:                                         ' check:innerText='FHA Case #:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAM4AAAAcCAYAAAAp6YDgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIUSURBVHhe7djBbcIwFMbxTtIRulMlLqzQGZByYI1c2AKxBjBEKyQ38bOJ/WyTYCmlkv+H3wHyYr9U/mLTt++fmwHwHIIDVCA4QAWCA1QgOEAFggNUIDhABYIDVCA4QAUVnJPpPj7Ne0Z3kprjbvz8ZfpLcN/lYDZj3e40fWcF4yXX8mT8wPZgrpm6P2GfS5712n8N/ezNMVeH5uSD82CxPhWc0z4IwdyiO5t+q+t88F60YG3/Mrd97leGGP/KqsHxtd1ufFtPu1aOvNHVuC82hUVCvenP2Tq0Z8XgBGMVj3Jebrcp8buQF98j/U2isPo+ctcCEuJ4HM/e43ZSgtSuyuAUhMGIFtdcMObnFW4cX6cD6eaUQKg5Ve38Dic92f7tuEEtwWnesn8OBAt66Y6j6/xbPP+WXxocT/WpghN95yTzu56Li99el/7l3iW7IVqx0lEtM45f1GpBi6VHNV/nFnwy73T9zvVQPH5l+inWDkrHO7RlneCEb/5EPhyyWNW4mp4nCU6mdjCGLNlxZtjntH8HCSPHMoRWCY7UpIu09L3I7Tr+SKZ+p7j+/Hh+3iQcLsD2s+rxcZBcL7ZWeojq+I3TvBWCoxZ76OFxTdzD4KleomPUdm+6cYEHNdH1QbS4g10ouRaRZ7DXbc/qeQlO81RwACxBcIAKBAeoQHCACgQHqEBwgAoEB6hAcIAKBAd42s38AteibdyxYjLOAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, CV" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NTypeInto.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </uix:NTypeInto>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:RetryScope.ActivityBody>
+                  <ui:RetryScope.Condition>
+                    <ActivityFunc x:TypeArguments="x:Boolean" />
+                  </ui:RetryScope.Condition>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:RetryScope>
+                <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="4" DisplayName="Click 'Seach'" sap:VirtualizedContainerService.HintSize="1162,157" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="88cd1786-7c22-4aa7-b747-51643e03f0f5" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loansearch.aspx" CvElementArea="1741, 461, 75, 34" CvTextArea="1754, 471, 47, 13" CvTextArgument="Search" CvType="Button" DesignTimeRectangle="1738, 458, 80, 40" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT ctl00_loanHeader_…'" FullSelectorArgument="&lt;webctrl tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl name='ctl00$loanHeader$btnSearch' tableRow='29' tag='INPUT' type='image' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl name='ctl00$loanHeader$btnSearch' class='' tag='INPUT' type='image' aaname='' /&gt;" Guid="fe0e8c54-3990-4b59-ab4a-e9787744913d" InformativeScreenshot="5a0d7d68701fd2475ed11d7feb3bbfc1.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan Search' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target CvElementArea="1661, 462, 63, 34" CvTextArea="1674, 471, 37, 13" CvTextArgument="Clear" CvType="Button" DesignTimeRectangle="1657, 458, 70, 40" ElementType="InputBox" FriendlyName="'INPUT ctl00_loanHeader_…'" FullSelectorArgument="&lt;webctrl tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='29' tag='INPUT' type='image' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl class='' tag='INPUT' type='image' aaname='' /&gt;" ImageBase64="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" SearchSteps="Selector, FuzzySelector, CV" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                </uix:NClick>
+                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1162,500" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                  <TryCatch.Try>
+                    <Sequence sap:VirtualizedContainerService.HintSize="450,272" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="4" DisplayName="Click 'Dynamic Loan' for the note input" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="88cd1786-7c22-4aa7-b747-51643e03f0f5" Timeout="2" Version="V3">
+                        <uix:NClick.Target>
+                          <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loansearch.aspx" CvTextArea="1703, 628, 146, 16" CvTextArgument="Compu-Link Corporation" CvType="Text" DesignTimeRectangle="1701, 623, 152, 26" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Compu-Link Corporation'" FullSelectorArgument="&lt;webctrl class='hermit-grid' tableRow='1' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableCol='17' tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hermit-grid' tag='TABLE' /&gt;&lt;webctrl isleaf='1' type='' class='' tag='TD' aaname='Compu-Link Corporation' check:innerText='Compu-Link Corporation' /&gt;" Guid="0fa487e0-b258-4f6e-837d-96d22034abfc" InformativeScreenshot="01b7f200dca462a6e6922dacf7fa2c36.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan Search' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                <uix:Target CvTextArea="1705, 602, 95, 13" CvTextArgument="Servicer Name" CvType="Text" DesignTimeRectangle="1706, 602, 93, 15" ElementType="Text" FriendlyName="'Servicer Name'" FullSelectorArgument="&lt;webctrl class='hermit-grid' tableRow='1' tag='TABLE' /&gt;&lt;webctrl aaname='Servicer Name' tableRow='1' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hermit-grid' tag='TABLE' /&gt;&lt;webctrl aaname='Servicer Name' type='' tag='A' class='' check:innerText='Servicer Name' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGEAAAATCAYAAACA7GNpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIuSURBVFhH7VY7jsIwEN0LcI89xl5iz0FPwwm25AAU21PRbENHR43Yii4lUiRar2PPjOdjLwERksIjPQlnJuM378UJb7OPuasYF9WECaCaMAFUEyaArAnrsxNx3NqaZyHudXW7VT7/VKxO7hImatyaXX8phwyMCYvDNdCMwm/crh2W4DgmOHc5bOj65EwYm9CgYCbwGSdqQhclUng6IM77lMMhz407hmTjfkM/fvz3Mdee3MKvrQCQx4A63CPx8yFy2NfvXTq9wgQfwN1yUDOyHL0pDryXn2/bwG8fivOM5zK87DdBExUNkRyICrV0tOleJjoQoBpY43dGCiANSqbmxIJaegjQPDskgfqdxGtWmxDXOIPkhCbgvrRWeT0vrmXviOyHOQ2EIUVPg4MpBdFEL6jRJIQA2jAB2SfdmxfL3u/B+eFvX7/jHKhenQboe0vkvOist3oIOxRMACBRH6EpW8somRQRiXdEQCiW5yRxwPy/Mf1gYOCAd5rg13FvjCQUXQ91sq/h2MsEG1Tv8b8JHXjTgsiEUh6uX1orsnhS9EACt0S+3wRahyiZ+QwTksE5KBNgQ/a6kJvmvwlmKGMSO9pKJEmyIAD061Wr+gtk+OF8pi/MSPkHTehjSuYkIIkU/MktvStDrmhCIk/kAJaU2l+JGusx0sPyqAlpP8YBhIvh/22FPaUpvU0w/bSefV5HFYODTPj6/gGfarwq3j+X0oSK8VBNmACqCaNj7v4AJjCKsCTXhIoAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, CV" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NClick.Target>
+                      </uix:NClick>
+                    </Sequence>
+                  </TryCatch.Try>
+                  <TryCatch.Catches>
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="454,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ActivityAction x:TypeArguments="s:Exception">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                        </ActivityAction.Argument>
+                        <Throw Exception="[exception]" sap:VirtualizedContainerService.HintSize="334,90" sap2010:WorkflowViewState.IdRef="Throw_2" />
+                      </ActivityAction>
+                    </Catch>
+                  </TryCatch.Catches>
+                </TryCatch>
+                <ui:RetryScope sap2010:Annotation.AnnotationText="Checks for the critical alert pop up, if it appears the 'OK' button is selected, if it is not there the robot continues." DisplayName="Retry Scope Critiacal Alerts" sap:VirtualizedContainerService.HintSize="1162,1311" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="3" RetryInterval="00:01:00">
+                  <ui:RetryScope.ActivityBody>
+                    <ActivityAction>
+                      <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="1120,1105" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NCheckState DisplayName="Check App State 'Critical Alerts'" sap:VirtualizedContainerService.HintSize="1058,994" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="88cd1786-7c22-4aa7-b747-51643e03f0f5" Version="V3">
+                          <uix:NCheckState.IfExists>
+                            <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="554,777" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:RetryScope DisplayName="Retry Scope: Click Ok" sap:VirtualizedContainerService.HintSize="492,479" sap2010:WorkflowViewState.IdRef="RetryScope_4" NumberOfRetries="3" RetryInterval="1.00:00:00">
+                                <ui:RetryScope.ActivityBody>
+                                  <ActivityAction>
+                                    <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="450,304" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Ok'" sap:VirtualizedContainerService.HintSize="388,193" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="88cd1786-7c22-4aa7-b747-51643e03f0f5" Version="V3">
+                                        <uix:NClick.Target>
+                                          <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loanbalance.aspx?eqs=3E%2fDblJZikVi0sHe1TkxnQ%3d%3d" CvElementArea="946, 645, 49, 34" CvTextArea="960, 654, 21, 13" CvTextArgument="Ok" CvType="Button" DesignTimeRectangle="943, 641, 55, 40" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT ctl00_ctl00_MainC…'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' idx='2' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='image' tag='INPUT' class='' aaname='' /&gt;" Guid="ca9372c4-3197-4eea-b873-263f4973d234" InformativeScreenshot="b4dbf4485e98be76d629507d07572024.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Loan Balance' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                            <uix:TargetAnchorable.Anchors>
+                                              <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                <uix:Target CvTextArea="561, 454, 89, 14" CvTextArgument="Critical Alerts" CvType="Text" DesignTimeRectangle="563, 455, 86, 15" ElementType="Text" FriendlyName="'Critical Alerts'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' idx='2' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='hermit-modal-title' aaname='Critical Alerts' check:innerText='Critical Alerts' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFoAAAATCAYAAAAQ/xqmAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIpSURBVFhH7ZVNSlxREIXdQPbkAtyGY3ET6gKcOmgIOBcEHWUkghBwJjpJIGgGySAgokbh6Xn4PU5X1/tr7De6BYfuW7+nzr3aa1/Wt6qC1aMIPRGK0BOhCD0RFoS++vm7crv986/a2N6fy4lQzfPLa7U3O0nj375f171mx+dpfCg2d75W9w9PnZzkV1yW5X0Wl7FohIagFtFC8rGY+zJEoZUrH0tOKbQ4iIssu/zP4KKelze/0lgbGqFFoOtVDsUQMZbFkN4IyV+mzll8WaG5SPXP4m2ohc5ecxt4vT/u/taERRzf4elF3Qfj4rLlEELmFwwXzGN9Qvseu+81WW7kEue5gIhKz8fnl3f8/8isGr3IwzJ+tdBjXiEC+UtBaA3MesXlPJ9FIa0Y32OvPp4sjFg+hxznEmdTz26ciWcz6AEn9ZW5PsJSQkfy7st6+XJDZkEeI7evNl5otrTn9IkW40JbjSzq4lj6X4c3HCN0Rt4hv0yfsVeX0NkOzOrjEo0eGdfMx4W6yUdcGP1jqAExz319QneJFWN9Z69FgMyc75hLz+J9NfLLxFN88TdCi7gW8AQWc5+LSq376ONi+HJZD5014+DobG4edUOEJlefXX7O4hJ3jiJmosIBX+REz8ixERqogVssULxLaJ1ZRqaFfDmvwbxWORgLIESb0CwXeQmIRU3kQi3mvalFVAB35sELg6/XLAhdsBoUoSdCEXoiFKEnQhF6EmxVb0F3572RgsvsAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, CV" />
+                                              </scg:List>
+                                            </uix:TargetAnchorable.Anchors>
+                                          </uix:TargetAnchorable>
+                                        </uix:NClick.Target>
+                                        <uix:NClick.VerifyOptions>
+                                          <uix:VerifyExecutionOptions DisplayName="Label 'Critical Alerts'" Mode="Disappears">
+                                            <uix:VerifyExecutionOptions.Retry>
+                                              <InArgument x:TypeArguments="x:Boolean" />
+                                            </uix:VerifyExecutionOptions.Retry>
+                                            <uix:VerifyExecutionOptions.Target>
+                                              <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loanbalance.aspx?eqs=7P1esZfKVytWq1fEPU9EtQ%3d%3d" CvTextArea="459, 417, 111, 17" CvTextArgument="Critical Alerts" CvType="Text" DesignTimeRectangle="461, 417, 108, 19" DesignTimeScaleFactor="1.25" ElementType="Text" FriendlyName="'Critical Alerts'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' idx='2' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='hermit-modal-title' aaname='Critical Alerts' check:innerText='Critical Alerts' /&gt;" Guid="a300ab5a-f4e3-47cb-9db3-5a0ceb81ea6f" InformativeScreenshot="76133c168b6879177faac3a7218ee25e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Loan Balance' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                                                <uix:TargetAnchorable.Anchors>
+                                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                                    <uix:Target CvTextArea="461, 472, 207, 16" CvTextArgument="Critical Alert Information" CvType="Text" DesignTimeRectangle="463, 469, 989, 30" ElementType="Text" FriendlyName="'Critical Alert'" FullSelectorArgument="&lt;webctrl aaname='Alert Date Alert Description Severity Alert Amt Expiration Date *' tableCol='70' tableRow='1' tag='TABLE' /&gt;&lt;webctrl aaname='Critical Alert Information' class='hermit-subHeading' tableRow='1' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Alert Date Alert Description Severity Alert Amt Expiration Date *' tag='TABLE' /&gt;&lt;webctrl aaname='Critical Alert Information' class='hermit-subHeading' type='' tag='DIV' check:innerText='Critical Alert Information' /&gt;" ImageBase64="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" SearchSteps="FuzzySelector, CV" />
+                                                  </scg:List>
+                                                </uix:TargetAnchorable.Anchors>
+                                              </uix:TargetAnchorable>
+                                            </uix:VerifyExecutionOptions.Target>
+                                            <uix:VerifyExecutionOptions.Timeout>
+                                              <InArgument x:TypeArguments="x:Double" />
+                                            </uix:VerifyExecutionOptions.Timeout>
+                                          </uix:VerifyExecutionOptions>
+                                        </uix:NClick.VerifyOptions>
+                                      </uix:NClick>
+                                    </Sequence>
+                                  </ActivityAction>
+                                </ui:RetryScope.ActivityBody>
+                                <ui:RetryScope.Condition>
+                                  <ActivityFunc x:TypeArguments="x:Boolean" />
+                                </ui:RetryScope.Condition>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:RetryScope>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="492,143" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Loan had a critical alert and it was closed.&quot;]" />
+                            </Sequence>
+                          </uix:NCheckState.IfExists>
+                          <uix:NCheckState.IfNotExists>
+                            <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="450,258" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,143" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;Loan did not have a critical alert.&quot;]" />
+                            </Sequence>
+                          </uix:NCheckState.IfNotExists>
+                          <uix:NCheckState.Target>
+                            <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loanbalance.aspx?eqs=3E%2fDblJZikVi0sHe1TkxnQ%3d%3d" CvTextArea="561, 454, 89, 14" CvTextArgument="Critical Alerts" CvType="Text" DesignTimeRectangle="563, 455, 86, 15" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Critical Alerts'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' idx='2' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='hermit-modal-title' aaname='Critical Alerts' check:innerText='Critical Alerts' /&gt;" Guid="a34e8631-8727-42cc-a8c3-d2fa245b3ae6" InformativeScreenshot="c44e408534e6a1ca261008399ad27265.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Loan Balance' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                  <uix:Target CvTextArea="562, 499, 165, 13" CvTextArgument="Critical Alert Information" CvType="Text" DesignTimeRectangle="564, 496, 791, 23" ElementType="Text" FriendlyName="'Critical Alert'" FullSelectorArgument="&lt;webctrl aaname='Alert Date Alert Description Severity Alert Amt Expiration Date *' tableCol='70' tableRow='1' tag='TABLE' /&gt;&lt;webctrl aaname='Critical Alert Information' class='hermit-subHeading' tableRow='1' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Alert Date Alert Description Severity Alert Amt Expiration Date *' tag='TABLE' /&gt;&lt;webctrl aaname='Critical Alert Information' class='hermit-subHeading' type='' tag='DIV' check:innerText='Critical Alert Information' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAxsAAAAbCAYAAAAUNpJUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAATISURBVHhe7d2xilRJFIfxeSPfQl/BBxB8AvPFBzAdTEyc0EizzRaENRAcjMRQBpaFwcBgEoNe/o3f3dPHut1X7Iv0+P2gcG7fqlOnapJzxp31bCNJkiRJK7DZkCRJkrQKmw1JkiRJq7DZkCRJkrQKmw1JkiRJq7DZkCRJkrQKmw1JkiRJq/iu2Xh/cbH54+xsGs/v3dvcXF9/ezuW95lX5369udn8+ejR5vrDh+0zcfPnzxrtN5K9z+/c2e771+PH3z7937Fy+vT69TB+kOurhw+3d7JE5mU+34Nj3Nkx1fMu/V5IkiTp97PTbKSApMCtIwU7TcMSFMs/um6ppQUuzUTGaO4xmo0U3olxzGaDJmku5q906LySJEkSpmaDIrIW5fUn7BSXFOj5W4sUxBlXb95Mxf+Xq6udn8pnZM2osGdPRp5BkT56z7uaa1fnkE+NH6OcasNV44/ivXzwYJrb54N1NBs1zt9Pnkxrud9+J7Vh6+9q3jQoL+7f3468v3z2bLtvPn/79OnOuvq97XlzLwxy7/tn3eePH6fz1Bj1HusZgvg5f9aN5kiSJOn0Tc0GxWEvyFMAprHgp/KjQjQNBgXn0majF66MfF4L4TooaGvBXgvcivg5V/266jnVAplBoc2e9d3b8/Od51E+rNsXh5E8+71QhPfPGZyJZoPP8/W/l5fDe8y753fv7nxGnLl9ckf9Xc4xajZG95iR9cG998EdSZIk6XbYNhsU97VgnEOhWAtDCmjWE6/+tLoW9rzPMwUohWxvCKLH6/uNUPAm7tz8mhNz6rl4X2PUnGNf3tHjjuKQa/aLHnN0X8ThTmg26p3XdcRmL/Jhr3ruqufSn8kjI1+TB8/R9+BeeR6tkSRJ0unbaTZqoTqHQpHiNXrBOYpX1/X5+1AcZxDv0PrRe+JQrEfNiYKXverYl3MvvjvWUViP4hAj+9RnYpIbMUD+mT+ac+j7EHOx+32QS8+tn6fHD/KYm9PfS5Ik6XZY9J9R5XcAKAJHxWQvOA8VuX1+19f350PrKYhHI3ESL2pOvbiuI3czt2cvvjvWse8oDjG407mCvuYe5J/55F/n9HuLeubo6/reh577eXhP/CAP5vQc+ntJkiTdDot/QZxitBeK0QtO1s0VuTUucWrRm981qAUw8YnX96tq7NGYy4mY7NnN7dmL767HHcXpBXqPWc+Ud0EczlPvj/xZN3fm6OuyZ92H+UubDeKNzscePQfyrGskSZJ0+qZmg4IvRWAf+4rV6AVnj5XCtK+jAO0jn1Ow9nfk0ferRsUuKKTJoefE+zoO7VnPUe8JrKPQHsUhRr8bCvqYuy/mcG72Cb4PNa9+5r5udAcZ7NPPW/9PZJxnLkbWRs+BPGsMSZIknb6p2QCFIKMXgL1QjH0FdEaKz9G6XkDXd8zPyHrm5vPRfmAdxXFFDApr5tZ9e6FMgTy3J4Vy5q7ZbASfM2rex2o2yC9z8vk/795t35FvP++o2Yh6j3X/6DkQs8eQJEnSafuu2ZAkSZKkY7DZkCRJkrQKmw1JkiRJq7DZkCRJkrQKmw1JkiRJq7DZkCRJkrQKmw1JkiRJq5iaDf5NBIfD4XA4HA6Hw+H4mQH/ZkOSJEnSKmw2JEmSJK1gs/kPyBeC4RnGACcAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, CV" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NCheckState.Target>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </uix:NCheckState>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:RetryScope.ActivityBody>
+                  <ui:RetryScope.Condition>
+                    <ActivityFunc x:TypeArguments="x:Boolean" />
+                  </ui:RetryScope.Condition>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:RetryScope>
+                <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1162,143" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;The 'Search For Loan' sequence has successfully completed and the 'Get Text' sequence will now begin.&quot;]" />
+              </Sequence>
+            </ActivityAction>
+          </uix:NApplicationCard.Body>
+          <uix:NApplicationCard.TargetApp>
+            <uix:TargetApp Area="1912, -8, 1936, 1056" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="3f7e3580fba67378c4745052e8ca0e9a.jpg" Selector="&lt;html app='chrome.exe' title='Home' /&gt;" Title="Home" Url="[in_strHERMITHomeURLSearch]" />
+          </uix:NApplicationCard.TargetApp>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </uix:NApplicationCard>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1262,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_10">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,141" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="[UiPath.Core.Activities.LogLevel.Warn]" Message="[&quot;The 'Search for Loan' seqence failed&quot; + exception.ToString]" />
+              <Throw Exception="[exception]" sap:VirtualizedContainerService.HintSize="388,90" sap2010:WorkflowViewState.IdRef="Throw_1" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>

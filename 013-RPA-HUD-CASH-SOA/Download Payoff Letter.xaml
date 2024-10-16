@@ -1,0 +1,733 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Payoff_Page_Data_For_SOA_Worksheet" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_strTransactionsPageURLDown" Type="InArgument(x:String)" />
+    <x:Property Name="in_strPayoffPageURLDown" Type="InArgument(x:String)" />
+    <x:Property Name="in_strPayoffDocArchiveFolderDown" Type="InArgument(x:String)" />
+    <x:Property Name="in_strModFHADown" Type="InArgument(x:String)" />
+    <x:Property Name="out_strPayoffLetterNameAndPathDown" Type="OutArgument(x:String)" />
+    <x:Property Name="out_strPendingDisbDown" Type="InOutArgument(x:String)" />
+    <x:Property Name="out_strSFAmtDown" Type="InOutArgument(x:String)" />
+    <x:Property Name="io_strNotesDateDown" Type="InArgument(x:String)" />
+    <x:Property Name="in_strPayoffDateDown" Type="InOutArgument(x:String)" />
+    <x:Property Name="out_strIntRateDown" Type="OutArgument(x:String)" />
+  </x:Members>
+  <this:Payoff_Page_Data_For_SOA_Worksheet.in_strTransactionsPageURLDown>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Payoff_Page_Data_For_SOA_Worksheet.in_strTransactionsPageURLDown>
+  <this:Payoff_Page_Data_For_SOA_Worksheet.in_strPayoffPageURLDown>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Payoff_Page_Data_For_SOA_Worksheet.in_strPayoffPageURLDown>
+  <this:Payoff_Page_Data_For_SOA_Worksheet.in_strModFHADown>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Payoff_Page_Data_For_SOA_Worksheet.in_strModFHADown>
+  <this:Payoff_Page_Data_For_SOA_Worksheet.io_strNotesDateDown>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Payoff_Page_Data_For_SOA_Worksheet.io_strNotesDateDown>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1249,8728</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Payoff_Page_Data_For_SOA_Worksheet_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Payoff_Page_Data_For_SOA_Worksheet" sap:VirtualizedContainerService.HintSize="1204,8663" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="si:FileInfo" Name="ifPayoffStatementPayoff" />
+      <Variable x:TypeArguments="x:String" Name="strPayoffStatementNamePay" />
+      <Variable x:TypeArguments="x:String" Name="out_strCorpAdvDown" />
+      <Variable x:TypeArguments="x:String" Name="strStraightDateDown" />
+      <Variable x:TypeArguments="x:String" Name="out_strLOCApraisalDown" />
+      <Variable x:TypeArguments="x:String" Name="strEstimatedExpense" />
+      <Variable x:TypeArguments="x:Decimal" Name="CorpAdvDec" />
+      <Variable x:TypeArguments="x:Decimal" Name="PendDisb" />
+      <Variable x:TypeArguments="x:Decimal" Name="sum" />
+      <Variable x:TypeArguments="x:String" Name="strExpenseAmount" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Loan &gt; Transactions &gt; Loan" sap:VirtualizedContainerService.HintSize="1142,8552" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="9a7a99c3-8b37-49a9-8c96-3239c34a073f" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1108,8295" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NGoToUrl DelayAfter="2" DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="1046,82" sap2010:WorkflowViewState.IdRef="NGoToUrl_2" Url="[in_strPayoffPageURLDown]" Version="V3" />
+            <uix:NGetText DisplayName="Get Text 'Int Rate %'" sap:VirtualizedContainerService.HintSize="1046,157" sap2010:WorkflowViewState.IdRef="NGetText_3" ScopeIdentifier="9a7a99c3-8b37-49a9-8c96-3239c34a073f" TextString="[out_strIntRateDown]" Version="V3">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/payoffs.aspx" CvTextArea="1082, 481, 34, 13" CvType="AnyWordGroup" DesignTimeRectangle="1043, 478, 77, 22" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'6.170'" FullSelectorArgument="&lt;webctrl class='hermit-grid' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableCol='7' tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hermit-grid' tag='TABLE' /&gt;&lt;webctrl type='' class='gridItemPayoff' tag='TD' /&gt;" Guid="49679ba6-0e27-4c74-bbb7-41e7a28e4bc7" InformativeScreenshot="d6424ad89b777b18f41c3da8e8245904.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Payoff' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="1048, 457, 66, 13" CvTextArgument="Int Rate %" CvType="Text" DesignTimeRectangle="1043, 452, 77, 26" ElementType="Text" FriendlyName="'Int Rate %'" FullSelectorArgument="&lt;webctrl class='hermit-grid' tableRow='1' tag='TABLE' /&gt;&lt;webctrl aaname='Int Rate %' tableRow='1' tag='TH' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hermit-grid' tag='TABLE' /&gt;&lt;webctrl aaname='Int Rate %' type='' tag='TH' class='' check:innerText='Int Rate %' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFEAAAAeCAYAAABUgfKPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHRSURBVGhD7Zo9jsIwEEa5wN5pb7Q99+AA3ICKmo4uNaKjS4kUidbLxD/5bI8d7yTRUsyTPi14TJw8T1ztziiLUYkrsPv6/hk/0F9NexCVKAyiEoVBVKIwiEoUBlGJwiAqURikSeLxQTNe5nLg63/NvnuNa+b05sjM3yJ4D7dzMj7czR7mckE2k0g3gzeX1oiofribJw0+rtHcWmpr1HM1N7d+LG0a5383BdlEIitptn4yl4FG27pxbo1q3IalEmOh9SAiieF719MHi++gM4wRTGe1S7SdMeFqpTV8NzvKgrlObO9CCrJAojHP7sTW57qErWevs5PqOyOpZ9dg6+W3x/8+zKGNaexCCrKsEwvSWEmQ6QESmK7NurEgMVvTSfUbXY/dsHEudHnp/inIv0q0df8apw+cjM90ov+ewW5MklEcHRWTTHu98vmMfIDEd7wguGYqrVViac1yoAvxXAxi0/k2yCYS/StReiDugf1Ydga673bNN15qusaM5GIiWR/UidE5xhzW/APmr3UQSwy9uVE9XI9ZI3S0xV+nHOxCN+Y2h6htANIkUZMHUYnCICpRGEQlCoOoRGEQlSgMohKFQVSiMIj+B8QKqMQVUImLMeYXcBMtSsvDSBoAAAAASUVORK5CYII=" SearchSteps="Selector, FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <Assign sap:VirtualizedContainerService.HintSize="1046,82" sap2010:WorkflowViewState.IdRef="Assign_10">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[out_strIntRateDown]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[out_strIntRateDown.Trim]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <If Condition="[String.IsNullOrEmpty(io_strNotesDateDown)]" sap:VirtualizedContainerService.HintSize="1046,521" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="476,169" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_7">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[in_strPayoffDateDown]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[Now.ToString("MM/dd/yyyy")]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap:VirtualizedContainerService.HintSize="476,170" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_8">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[in_strPayoffDateDown]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[io_strNotesDateDown.Trim]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </If.Else>
+            </If>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Payoff Date'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1046,218" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="9a7a99c3-8b37-49a9-8c96-3239c34a073f" Text="[in_strPayoffDateDown + &quot;[k(Enter)]&quot;]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/payoffs.aspx" CvElementArea="355, 418, 156, 25" CvType="InputBox" DesignTimeRectangle="357, 420, 137, 20" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'07/10/2024'" FullSelectorArgument="&lt;webctrl aaname='07/10/2024' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='07/10/2024' tag='TABLE' /&gt;&lt;webctrl type='text' tag='INPUT' class='hermit-filter-field igte_CaribbeanEditInContainer' aaname='07/10/2024' /&gt;" Guid="214742bd-c9b0-4a50-b5f1-47833c3ee1fe" InformativeScreenshot="dffb7bbc19aedd7ec7cb92bc64a50f7a.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Payoff' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="266, 423, 78, 16" CvTextArgument="Payoff Date:" CvType="Text" DesignTimeRectangle="266, 418, 87, 24" ElementType="Text" FriendlyName="'Payoff Date'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl class='headerLabel' tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl class='headerLabel' type='' tag='TD' aaname='Payoff Date:' check:innerText='Payoff Date:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFsAAAAcCAYAAAAOa8NNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHYSURBVGhD7ZbRjcIwDIZvkhvhduKlD4zQIfpQscDdAiCxBnQMhFjCRxsnTeyEtL3EOiF/Uh7qJvWfP7HhAxQx1GxB1GxB1GxB1GxB1GxB1GxB1GxB1GxBiNkX6L928MnGAa44ozaPY+vyNsfbM+Jr4jr8+f7oB5zwj4ibvT/DAyNwP0NDY9Xg+a2ZKfNi723MHNYyxjW1Dyhv9pNrN96WFk53DFSjjNkANzjtR83LKjKXoxTbzB4Okzg3ussU5qIjm7aVQta63G608PNtvsfnzqSMMvG85mSc6PS/v/Vw1rcRfLYlGibG9VRw6pnl4/lzG3ttNsZfao58g+g07+eDS+XMsewHktz0CXIjbGJTBeYmxzcVtqMwVslsS0IzncvWksPayqI2EmBPHQ1iwnBD/cBbSKz3h+tLm425MppTz2y4itzGarNzQudvtEEpjpi5MbNtrJTZ4UHTOWufS7HZbPof2BdmbjCP017I8xUyG6uL9uikZleN+Bzt2fP7nKYU69uIuzVmNN1hEhb0M9cbI3+9XEnjCEpzu9l0hPNzmucDcLmJTn9/hcwuhDX7jz3u3ahitm0ja0/+3SlstleOeqsZddqIEkXNFkTNFkTNFkTNFkTNFgPgF4h3SxoChtzGAAAAAElFTkSuQmCC" SearchSteps="Selector, FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NMouseScroll KeyModifiers="{x:Null}" Direction="Down" DisplayName="Mouse Scroll 'hermitsp.com/forms/loan…'" sap:VirtualizedContainerService.HintSize="1046,157" sap2010:WorkflowViewState.IdRef="NMouseScroll_2" InteractionMode="HardwareEvents" MovementUnits="5" ScopeIdentifier="9a7a99c3-8b37-49a9-8c96-3239c34a073f" Version="V3">
+              <uix:NMouseScroll.Target>
+                <uix:TargetAnchorable CvElementArea="163, 54, 1556, 33" CvType="InputBox" DesignTimeRectangle="201, 59, 1447, 24" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'hermitsp.com/forms/loan…'" FullSelectorArgument="&lt;ctrl name='Loan &amp;gt; Payoff - Google Chrome' role='pane' /&gt;&lt;ctrl name='Address and search bar' role='editable text' /&gt;" FuzzySelectorArgument="&lt;ctrl name='Loan &amp;gt; Payoff - Google Chrome' role='pane' /&gt;&lt;ctrl name='Address and search bar' role='editable text' automationid='' /&gt;" Guid="afee2c02-b0c2-4a96-b286-19fbe098b4f5" InformativeScreenshot="ca9dee5120c7bc857ca7d796deaae680.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Loan &amp;gt; Payoff - Google Chrome' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V2" Visibility="Interactive" />
+              </uix:NMouseScroll.Target>
+            </uix:NMouseScroll>
+            <uix:NCheckState DisplayName="Check App State 'Service Fee'" sap:VirtualizedContainerService.HintSize="1046,611" sap2010:WorkflowViewState.IdRef="NCheckState_2" ScopeIdentifier="9a7a99c3-8b37-49a9-8c96-3239c34a073f" Timeout="0.5" Version="V3">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="496,394" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NGetText DisplayName="Get Text 'Monthly Service Fee'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="9a7a99c3-8b37-49a9-8c96-3239c34a073f" TextString="[out_strSFAmtDown]" Version="V3">
+                    <uix:NGetText.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/payoffs.aspx" CvTextArea="810, 547, 42, 14" CvType="AnyWordGroup" DesignTimeRectangle="766, 544, 90, 23" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'$30.00'" FullSelectorArgument="&lt;webctrl tableCol='4' tableRow='5' tag='TD' idx='2' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' class='gridItemPayoff' tag='TD' /&gt;" Guid="45db9b01-4fc6-4ec1-a795-6e7c6da4a2bd" InformativeScreenshot="41981b080d1e0a3a89a89c5126f111a3.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Payoff' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target CvTextArea="479, 547, 122, 16" CvTextArgument="Monthly Service Fee" CvType="Text" DesignTimeRectangle="476, 544, 290, 23" ElementType="Text" FriendlyName="'Monthly Service Fee'" FullSelectorArgument="&lt;webctrl class='hermit-grid' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableCol='3' tableRow='5' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hermit-grid' tag='TABLE' /&gt;&lt;webctrl type='' class='gridItemPayoff' tag='TD' aaname='Monthly Service Fee' check:innerText='Monthly Service Fee' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAASYAAAAbCAYAAADRVyIdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMmSURBVHhe7ZjbjeMwDEVdo4FpKPDf1pFpYHtICpmPlOGVRFImJcr2BHnI2XsABbaelGMeKBlmAADoDIgJANAdEBMAoDsgJgBAd0BMAIDugJgAAN0BMQEAuqMpptv3OA/DMI/fN64RbvP5a0ht05WrHgbNXa9JXE5h3dOF737DErOUx8ceWY//Pi7zpOJ+/h4AeD/rYvoa5/HrHNJN8XOexwcmBq0jazxDTCwlM46S/dVivY9nxQpAv6yL6TSFpBjn8w9XRq4T1x9FTH5i0/7uOX29GogJ/H9siOmSZKBFEe+na50sqX+oS0WfstIJa5ynk2oXIUTJmTEipnOan9qmkJpEFlOac6kXofnJ652YHNRJcDAy5rmDjCn2v7U80z5iPLVYU8wyr4mBnqG0tcWzT0ztdVa+GwA6ZVNMKenyyxyTJCZgkSw5MSOFCCThi3sZm9YpTkytubKYuD6vX4mqwEjHO5Ht2I9KaBtzHZfM7+2N2mw/iq84mWaswLw9tNcJmL3oWAHol20xpcTgFztLyiZy9bLrZKiSzo5dTaqAnltfL/HZ6y1SX05uIyIlGomD2uuY7J5iu76Wvs44wRFp3Jvbt3heNTpWRu2nmtdZG4De2CGm5cVfXnKdLE4CvkBMOsFifTtxfUhQNF7LSheKwxdMfhYxDjf+FaGk51Ov58t1S0zUXs8X90bx1G2t0xkAfbBDTHKt/wi3yWKEEXmFmLgv/d/Fa3lUpyFGx9jqk/DFJGMuIf6lTfdtjIv86tSyJSZ5DnxbkAUKwIHYJSZKpCCFnLxFsugk50SxY58hJh5r4vKg9fS4KsZyP7xfum8Jhuc1grF97d50/OWcNJcvkCI2B3cduTffDffdLUUA3sM+MTUSSSdLlkQsWhQbYsrSS8lSS2BNTDLWT2gNzbv8lHHG5DjK9jomoYqnFb/MawQqYuNi5tFsiyli1inEY74b/IwDB6AppmMQkxaJBsCncWwxrf43BAA4KocVE/10wWkJgE/k4D/lAACfCMQEAOgOiAkA0B3DMPwJHygoKCg9FbcSBQUF5Y2FT04AANANEBMAoDPm+R/nf2D71Y3v0AAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NGetText.Target>
+                  </uix:NGetText>
+                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_11">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[out_strSFAmtDown]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[out_strSFAmtDown.Trim.Replace("$","")]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="496,197" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_5">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[out_strSFAmtDown]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">0</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/payoffs.aspx" CvTextArea="810, 547, 42, 14" CvTextArgument="$*.*" CvType="Text" DesignTimeRectangle="766, 544, 90, 23" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'$30.00'" FullSelectorArgument="&lt;webctrl class='hermit-grid' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableCol='4' tableRow='5' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hermit-grid' tag='TABLE' /&gt;&lt;webctrl type='' class='gridItemPayoff' tag='TD' aaname='$*' check:innerText='$*' /&gt;" Guid="03695362-b3c2-475f-9a00-b7f7940c2200" InformativeScreenshot="13a377f62040b3e6d93fad3a6f2f20cb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Payoff' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="479, 547, 122, 16" CvTextArgument="Monthly Service Fee" CvType="Text" DesignTimeRectangle="476, 544, 290, 23" ElementType="Text" FriendlyName="'Monthly Service Fee'" FullSelectorArgument="&lt;webctrl class='hermit-grid' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableCol='3' tableRow='5' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hermit-grid' tag='TABLE' /&gt;&lt;webctrl type='' class='gridItemPayoff' tag='TD' aaname='Monthly Service Fee' check:innerText='Monthly Service Fee' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAASYAAAAbCAYAAADRVyIdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMmSURBVHhe7ZjbjeMwDEVdo4FpKPDf1pFpYHtICpmPlOGVRFImJcr2BHnI2XsABbaelGMeKBlmAADoDIgJANAdEBMAoDsgJgBAd0BMAIDugJgAAN0BMQEAuqMpptv3OA/DMI/fN64RbvP5a0ht05WrHgbNXa9JXE5h3dOF737DErOUx8ceWY//Pi7zpOJ+/h4AeD/rYvoa5/HrHNJN8XOexwcmBq0jazxDTCwlM46S/dVivY9nxQpAv6yL6TSFpBjn8w9XRq4T1x9FTH5i0/7uOX29GogJ/H9siOmSZKBFEe+na50sqX+oS0WfstIJa5ynk2oXIUTJmTEipnOan9qmkJpEFlOac6kXofnJ652YHNRJcDAy5rmDjCn2v7U80z5iPLVYU8wyr4mBnqG0tcWzT0ztdVa+GwA6ZVNMKenyyxyTJCZgkSw5MSOFCCThi3sZm9YpTkytubKYuD6vX4mqwEjHO5Ht2I9KaBtzHZfM7+2N2mw/iq84mWaswLw9tNcJmL3oWAHol20xpcTgFztLyiZy9bLrZKiSzo5dTaqAnltfL/HZ6y1SX05uIyIlGomD2uuY7J5iu76Wvs44wRFp3Jvbt3heNTpWRu2nmtdZG4De2CGm5cVfXnKdLE4CvkBMOsFifTtxfUhQNF7LSheKwxdMfhYxDjf+FaGk51Ov58t1S0zUXs8X90bx1G2t0xkAfbBDTHKt/wi3yWKEEXmFmLgv/d/Fa3lUpyFGx9jqk/DFJGMuIf6lTfdtjIv86tSyJSZ5DnxbkAUKwIHYJSZKpCCFnLxFsugk50SxY58hJh5r4vKg9fS4KsZyP7xfum8Jhuc1grF97d50/OWcNJcvkCI2B3cduTffDffdLUUA3sM+MTUSSSdLlkQsWhQbYsrSS8lSS2BNTDLWT2gNzbv8lHHG5DjK9jomoYqnFb/MawQqYuNi5tFsiyli1inEY74b/IwDB6AppmMQkxaJBsCncWwxrf43BAA4KocVE/10wWkJgE/k4D/lAACfCMQEAOgOiAkA0B3DMPwJHygoKCg9FbcSBQUF5Y2FT04AANANEBMAoDPm+R/nf2D71Y3v0AAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NCheckState.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NCheckState>
+            <uix:NCheckState DisplayName="Check App State: Pending Disbursement" sap:VirtualizedContainerService.HintSize="1046,611" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="9a7a99c3-8b37-49a9-8c96-3239c34a073f" Timeout="0.5" Version="V3">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="496,394" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NGetText DisplayName="Get Text 'Pending Disbursements'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="9a7a99c3-8b37-49a9-8c96-3239c34a073f" TextString="[out_strPendingDisbDown]" Version="V3">
+                    <uix:NGetText.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/payoffs.aspx" CvTextArea="799, 547, 49, 13" CvType="AnyWordGroup" DesignTimeRectangle="758, 544, 94, 23" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'$400.00'" FullSelectorArgument="&lt;webctrl class='hermit-grid' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableCol='4' tableRow='5' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hermit-grid' tag='TABLE' /&gt;&lt;webctrl type='' class='gridItemPayoff' tag='TD' /&gt;" Guid="47e82433-6a88-4406-92ba-b1bb885a1968" InformativeScreenshot="e97060eaf521ee055387291cb90f1109.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Payoff' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target CvTextArea="482, 547, 143, 16" CvTextArgument="Pending Disbursements" CvType="Text" DesignTimeRectangle="480, 544, 278, 23" ElementType="Text" FriendlyName="'Pending Disbursements'" FullSelectorArgument="&lt;webctrl class='hermit-grid' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableCol='3' tableRow='5' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hermit-grid' tag='TABLE' /&gt;&lt;webctrl type='' class='gridItemPayoff' tag='TD' aaname='Pending Disbursements' check:innerText='Pending Disbursements' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAARoAAAAbCAYAAACjmECrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANOSURBVHhe7ZlbbuMwDEW9xgDZUOC/WYe7lHQh/cgyPDJJWSRFOfY4GiTFPYCKyJL4UMRbuR1mAADoDIQGANAdCA0AoDsQGgBAdyA0AIDuQGgAAN2B0AAAutMUmsfXZR6GoWrjt0x4MeTvOs2P9Pl+S75udx54Gfd5DPLJPle+x/R8TLO3eMzTdZgvX2YlAKDBttCERXiZpx/pv5D/JTRWKFkwTJ4QmorwLABwgGNC07HA+h/mSGgWWs+3gNAAcITTQkO3j/waom8hcjMY1bgtTLlN0NglzSv+9I2GPyc72Ye/Uf1M8yWPXdO8pgC0BMXlZG40OsbU1vzymqnEpffK34ooxhw3rx1TTqtNnUNqPsZnezwt35Vaq+cbW8aP3kfJJ8VUxiV+8iHPco76WacbLvhdnHp1snOigvX91lr5+4n0K6FR66i/16ehfXPR/tgGFxnF6MSF1/PnEpf0AxtEIDQ+hzUumlvWHtljmqtytHvl8jcx5nxcX/Kpv6vyfZCddQyAmBN/DHYFsqAP3Y5i04KgD3MlNGuxu0NvbC7Udgv/KDTGfsYWIqHzPZS72AqLlcd277Hrm73S6wht28dk98TYSdbpl4LOHYAnHHx10siBq9qeYguKXhXCbqHxPoKCKbSExq2JinXNrS2U5iaymXsUIz9b/fiirlrDTxS72LJ5lMZx1DG1hWbBxQXRAU84ITR8OKMbAnGw2LS/3UJjbC5ERZxpCA3ZUM993AqKhXwHfvS6g7lbOE4eP7jHrm/2ahlrfp91TNtCo/D7B0DACaGp55RCTGwWm6xdx/mg57W7hUbWrQVCPltFHAmN9UuouEPf1Jd1Pv481xUf59oSGh8Xj5u1e/fY9e1a58fE6GOyuRs77ntku7oPQM0poVmgA5kOLLf2oa8PqF1L/4URf/qQ688LVVxSMGTnNlUFU+BCK7HmNcU2YeLOgpKbfd78r1NC58bzWkKT0DkszcW0e483hSbh/JQYtoWmrBPb5CeyA0BMU2g+Ey6YcjsAALwDHy407tpOv2lxjQfg3fj4Gw29HqhrPG4zALwfv+zVCQDwjkBoAADdgdAAALozDMOf9AMNDQ2tZwsfoqGhob2wyc0GAAC6AaEBAHRmnv8CQv+3guAVARcAAAAASUVORK5CYII=" SearchSteps="FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NGetText.Target>
+                  </uix:NGetText>
+                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_12">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[out_strPendingDisbDown]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[out_strPendingDisbDown.Trim]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="496,197" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[out_strPendingDisbDown]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">0</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/payoffs.aspx" CvTextArea="482, 547, 143, 16" CvTextArgument="Pending Disbursements" CvType="Text" DesignTimeRectangle="480, 544, 278, 23" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Pending Disbursements'" FullSelectorArgument="&lt;webctrl class='hermit-grid' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableCol='3' tableRow='5' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hermit-grid' tag='TABLE' /&gt;&lt;webctrl type='' class='gridItemPayoff' tag='TD' aaname='Pending Disbursements' check:innerText='Pending Disbursements' /&gt;" Guid="9dc1630a-00b7-43de-87f0-0c464474057f" InformativeScreenshot="0912339ca5b7c0e69d676d3b977c4e70.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Payoff' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="484, 457, 130, 15" CvTextArgument="Balance Description" CvType="Text" DesignTimeRectangle="480, 452, 278, 26" ElementType="Text" FriendlyName="'Balance Description'" FullSelectorArgument="&lt;webctrl class='hermit-grid' tableRow='1' tag='TABLE' /&gt;&lt;webctrl aaname='Balance Description' tableRow='1' tag='TH' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hermit-grid' tag='TABLE' /&gt;&lt;webctrl aaname='Balance Description' type='' tag='TH' class='' check:innerText='Balance Description' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAARoAAAAeCAYAAADzVdEYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANPSURBVHhe7Z09buMwEEZzgdzJN9o+98gBfINUqd2lc22kc+fSQIC0WlHkUMMhKcmyubax7wMeQvN3xHA+0EqRlw4hhBoLo0EINdfL6+bPUHA/AQBuhfYVjAYAmqB9BaMBgCZoX8FoAKAJ2lcwGgBogvYVjAYAmqB9BaMBgCZoX5k1mrf979Ce69RtC/1LyByHz3L7vdgeh7CMfrvde7n/v8DHtD6GR91r+P9wkvJio0kO7vt3d3aVP9/dm+pb47GNJk1qMZ97xbrGaLbHsT9GA4+Ck5TXGc3mo9v9uNplt5pnMprXzVd3cNULTfTeXHsDAmiFk5Svu9Ecv8a6z9PQL0q15XOEZI4aDSv23Yc1nGzSy/oiHUc0waCkLaWWpL5emahZr7gXogtilfUP/Y3E6bz/MDGJ6Z26Q3ym/PYicuNLvy8/pyh93kX7DbACJynf5h1NSCZ30PUYOezp52AEcpglEUMCxvXM55g4pr8YnF/b3LRMXJZpown1xfhkjHmWJJZ8rG0XA9DxFY3Grqf23j6D3a+59tn9BliJk5RXfnWyCRAwtxp7mMtzBNUOuknOyUSwiW2NwGCTsFSfrZeYlyS+Uz7PZKw9pfXTOrnRjPHbOaeNJIyP+5HXZTFaswRYiZOUVxqNqZcEryRn+nlMzuEwF28M9YNfM4eBGIeVun0panP5ej9G4skkyWvM1Ulin4y10p7W5UYztx/F30vJaMKcc/sNsBYnKd/EaGyfyc/28F9oNFm7pphYdcpGMJOIE/j5nFKTqo1dYzR2zkmjMbcXT1qXxYjRwI1wkvJKo0nfFUgffzjDQe4lY5I5xAxC8sTkXHrwK0bl2807jBnjKSV6tr6ZI223RmC+qk3GeoHR9PLrmefr8fHUjGbOiArPi9HAjXCS8hUvg3WCjF+HnM7HU5JQtcM9SP6iUrtBlA6+JLAoMZI0Fn0bsESTS5Qm/oBZL03C0Qy8RhMojdWxLjaa/hl2MVYTn56/nzvbvzinKB2/aL8BVuAk5VmjgXtib0wAz4P2FYzmocFo4HnRvoLRPDQYDTwv2lcwGgBogvYVjAYAmqB9BaMBgCZoX8FoAKAJ2lcwGgBogvYV/lMlQqi5MBqEUHNhNAihxuq6v5GsxzP54dILAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NCheckState.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NCheckState>
+            <uix:NCheckState DisplayName="Check App State 'Corporate Advance'" sap:VirtualizedContainerService.HintSize="1046,611" sap2010:WorkflowViewState.IdRef="NCheckState_3" ScopeIdentifier="9a7a99c3-8b37-49a9-8c96-3239c34a073f" Version="V3">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="496,394" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NGetText DisplayName="Get Text 'Corporate Advance'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NGetText_4" ScopeIdentifier="9a7a99c3-8b37-49a9-8c96-3239c34a073f" TextString="[out_strCorpAdvDown]" Version="V3">
+                    <uix:NGetText.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/payoffs.aspx" CvTextArea="803, 584, 49, 14" CvType="AnyWordGroup" DesignTimeRectangle="766, 581, 90, 22" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'$150.00'" FullSelectorArgument="&lt;webctrl class='hermit-grid' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableCol='4' tableRow='6' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hermit-grid' tag='TABLE' /&gt;&lt;webctrl type='' class='gridItemPayoff' tag='TD' /&gt;" Guid="db99d786-6ccf-4db1-b229-287180ebd0b0" InformativeScreenshot="ce83942de1f3638adce95aeda2cc16f8.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Payoff' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target CvTextArea="487, 584, 115, 16" CvTextArgument="Corporate Advance" CvType="Text" DesignTimeRectangle="484, 581, 282, 22" ElementType="Text" FriendlyName="'Corporate Advance'" FullSelectorArgument="&lt;webctrl class='hermit-grid' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableCol='3' tableRow='6' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hermit-grid' tag='TABLE' /&gt;&lt;webctrl type='' class='gridItemPayoff' tag='TD' aaname='Corporate Advance' check:innerText='Corporate Advance' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAR4AAAAaCAYAAABhLzN0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALzSURBVHhe7ZpRjuMgDIZ7xkq9UJWrdI7SOcg89BhZMJDYBpJ2ukLp7vdJPADGNiT+RTpzmgEABoPwAMBwEB4AGA7CAwDDQXgAYDgIDwAMB+EBgOHsCs/j6zyfTqelnb8eeebf536Ne57me+53+Z6eswMAYVN46sK7z9OHiI8I5uU2/z7TuNdpnsIZTN95qAfCA/ASfeH5uc3n03m+/eR+4UOK7F3hkfXX+3N+EB6Al+gKz/OFm25B5VNM3w7ijel8nYKAhbnoKxfoLfpu2EfSLSu3UPgLce0l3EAuca4I4mO+Sb+0XPwSJ4+pPXR9VyS/kltHgLWvKeyxxJZx7dutNzlov9luuq5n43OUZ1LmzLPpPwOAI9IVnqqAmqQCXT69pOB9kambQBGE4tfZW7Fzn3V5rS6qcivJPZOLF07bd3l7RATWvOM+jK3kUuaL+GnRW9eauHFO5WTOWGLW/WW/zu+61u3FCR3AEXlPeKqX3BZB5UOKp2dfi0FVtKrwaqxQtYTG3AScCGjiWp3HpmBETG4pjxIr2rZvICknKzT6bGo/zech6+y5RFuTP8DBeO9TqxKDZ4SnVyS20CK7wiNjIYa0IBYqts0/+V5tS3P+hJ5tya0WSF/8Elv2HX2pGGJX/KV8nxOeRsyCOQPVWiIFcBBe/3FZj1c2zwhPz74urm3h8fa2b4UnzbVvHo4YpyG4ei+7girnEvpxXNn5daa/KTyNmIUSK3cBPoG+8ATkZW8U+1oArvidsLQLtG/fuqVY241cnG/rq+5Lbh2BWWJqdHyXd/ecjJC4mCIYKv8d4fH7X/fjnkFe19wDwEHYFJ6IvOCxQHKrX+j0opd5fatoC0/635iWfSQVcW6NtWokj622Jl4pbLXG+Pa+IlXxa2xB63NJf7mz/rzQCUtOoYW5u7bZE56AfRY6nn0G5twADsiu8PxVWuIBAP8dCA8ADAfhAYDhjBUeAIAAwgMAw0F4AGA4CA8ADAfhAYDhIDwAMJh5/gM20m/VCDniqAAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NGetText.Target>
+                  </uix:NGetText>
+                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_13">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[out_strCorpAdvDown]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[out_strCorpAdvDown.trim]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="496,197" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_9">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[out_strCorpAdvDown]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">0</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/payoffs.aspx" CvTextArea="487, 584, 115, 16" CvTextArgument="Corporate Advance" CvType="Text" DesignTimeRectangle="484, 581, 282, 22" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Corporate Advance'" FullSelectorArgument="&lt;webctrl class='hermit-grid' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableCol='3' tableRow='6' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hermit-grid' tag='TABLE' /&gt;&lt;webctrl type='' class='gridItemPayoff' tag='TD' aaname='Corporate Advance' check:innerText='Corporate Advance' /&gt;" Guid="74a2cd2e-fc19-4227-8930-ef592d83e0d4" InformativeScreenshot="90e431794b1333354b3dbbf2f7466ad0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Payoff' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="488, 472, 130, 16" CvTextArgument="Balance Description" CvType="Text" DesignTimeRectangle="484, 467, 282, 26" ElementType="Text" FriendlyName="'Balance Description'" FullSelectorArgument="&lt;webctrl class='hermit-grid' tableRow='1' tag='TABLE' /&gt;&lt;webctrl aaname='Balance Description' tableRow='1' tag='TH' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hermit-grid' tag='TABLE' /&gt;&lt;webctrl aaname='Balance Description' type='' tag='TH' class='' check:innerText='Balance Description' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAR4AAAAeCAYAAAD6vnFiAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAM9SURBVHhe7Z0xctswEEV9gdzJN3Lve/gAvoEr1+rcqfa4c6dSM55xywggFtxdgiBFM5DkvD/zJhABgSuG+0wrRe46QghpHMRDCGmeuz/3D3EQ/gQA+FdozyAeAGiC9gziAYAmaM8gHgBogvYM4gGAJmjPIB4AaIL2DOIBgCZoz8yK53H/HefHOXTPhfUlZI/31/L8pXj+jGW5fHe7p/L6FvQ1ra/hWq81QIiMF4vH3MhPH90xHPz66B7V2imuWzy2yUVGl6r1fPG8de/q7wHxwLUSIuN14rl/6XZf4eiyp55bEk9s5HB4oVQvyy3VCv87ITL+2RPP59tw7PUQ1+WoufEeqWFyBoHltft0jhDfWHJ+ia7DzdVkN/V00R9XUjWfza33tSyuVaRxOD2xhEG/r63JrwmROZG/pD9e+vvq95TY+hddb4ANCJHxNt/xpOY67l/Me+Tmt69Tw8jNLY2ZGjKfz73OjeTWixTiuYt72UbT1MWTjuv985x8dvdZ3NpqrVm+9vxF8eTX/klTxDSIwl8v/xn9/Oz1BtiIEBmv/FWr3DT2yWB8c5f3SJm68V0z1xpjNOeE6FkintGaVE9/Dv3UMd6nVmtJGoGieCbFsnBexBexx0Y1enkCbESIjFeKxx2Xn+ypYfx77OuhWePNXXxKmW6EKVkE5L2jmMYbqIunf6rox+PkxnSyDZHaa7WuFY+9HjPi8U9cEfueuesNsBUhMt5EPH5N9bVvhjPFM5pX1OZKlMVgG7MuD8sgqV5a9XrWicfuuXC+JJ6F1xtgK0JkvFI89rsGWWN+Cp8i7zF7iGhMY5+ytBEmxBXn5yTmKEll7vx1MbjvfGq1FqQxuf8pfT3+Ox53vhO+fv8Z/fzs9QbYiBAZ/+DLZd2ww69PIcfPg2qw6Zs9Rv7FJjXPokaQhpZIYxfmag2UpWdiRRRJNUhybZFBDn1EConJWs8Qz2nNLtdq69PXMtQ1un55T0n5/dXrDbABITKeFQ9ckrKcAG4R7RnEc9UgHvg9aM8gnqsG8cDvQXsG8QBAE7RnEA8ANEF7BvEAQBO0ZxAPADRBewbxAEATtGf4n0QJIc2DeAghzYN4CCGN03V/ASw9wtyx4CYOAAAAAElFTkSuQmCC" SearchSteps="Selector, FuzzySelector, CV" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1046,385" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+              <TryCatch.Try>
+                <uix:NGetText DisplayName="Get Text 'EST-EXP'" sap:VirtualizedContainerService.HintSize="334,157" sap2010:WorkflowViewState.IdRef="NGetText_5" ScopeIdentifier="9a7a99c3-8b37-49a9-8c96-3239c34a073f" TextString="[strEstimatedExpense]" Timeout="4" Version="V3">
+                  <uix:NGetText.Target>
+                    <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/payoffs.aspx" CvTextArea="483, 517, 115, 16" CvType="AnyWordGroup" DesignTimeRectangle="480, 514, 278, 22" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Estimate Expenses'" FullSelectorArgument="&lt;webctrl class='hermit-grid' tableRow='*' tag='TABLE' /&gt;&lt;webctrl tag='TD' aaname='Estimate Expenses' innertext='Estimate Expenses' visibleinnertext='Estimate Expenses' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hermit-grid' tag='TABLE' /&gt;&lt;webctrl tag='TD' visibleinnertext='Estimate Expenses' type='' class='gridItemPayoff' /&gt;" Guid="ff43a170-20fb-46f9-a8c6-fbd4496e5333" InformativeScreenshot="8bcae45a38443bd69d4b910c75ea1a07.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Payoff' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                          <uix:Target CvTextArea="372, 517, 57, 13" CvTextArgument="EST-EXP" CvType="Text" DesignTimeRectangle="370, 514, 110, 22" ElementType="Text" FriendlyName="'EST-EXP'" FullSelectorArgument="&lt;webctrl class='hermit-grid' tableRow='*' tag='TABLE' /&gt;&lt;webctrl tag='TD' aaname='EST-EXP' innertext='EST-EXP' visibleinnertext='EST-EXP' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hermit-grid' tag='TABLE' /&gt;&lt;webctrl tag='TD' aaname='EST-EXP' innertext='EST-EXP' visibleinnertext='EST-EXP' type='' class='gridItemPayoff' check:text='EST-EXP' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHIAAAAaCAYAAABreghKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF3SURBVGhD7ZZbjsMgDEWzRqRuqMpW0qWkC+lHl+EB7DQGTENnMh+17pEstYEY5BMeEwEXQKQTINIJEOkEiHQCRDoBIp3QFbleJ5omKwItD+lET1ouZft8l6ZIP0eM6yq9FI+FgtU3hfR/3kL8r+fA8POZUi/+3ebQc/PGe5FWsV+IxKLPSnOnYMf5IllkK6km57oscQZC9V4WqdsT9znKPM79rfxBpC0tF9F470yR29jhllTxB8W/GVOk0c8TJ6/IPueKjMgKC2kOlTSIVOTCy9lShJZRnWnvijQucs+3hy2X58jnogZbq2Ko8IpcPCn8f5+RDG+v1nh6Ljpw2fkALmK7Spp81erLRf5A5JbPGs9ckc75vci0VVnFylvYgEiLUZHFGO1ZDZGK48LL1lb06V+AzhNp3JZldW/PIFKRCy/bXh17EUWcautdeMZFlvlekcVYHw/DWyx/BBAJvhaIdAJEOgEinQCRToBIJ0CkEyDSCRDpAqIf5gtlEccIFswAAAAASUVORK5CYII=" SearchSteps="FuzzySelector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NGetText.Target>
+                </uix:NGetText>
+              </TryCatch.Try>
+              <TryCatch.Catches>
+                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ActivityAction x:TypeArguments="s:Exception">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                    </ActivityAction.Argument>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,143" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;There is no Estimated Expenses for this loan.&quot;]" />
+                  </ActivityAction>
+                </Catch>
+              </TryCatch.Catches>
+            </TryCatch>
+            <If Condition="[Not String.IsNullOrEmpty(strEstimatedExpense)]" sap:VirtualizedContainerService.HintSize="1046,821" sap2010:WorkflowViewState.IdRef="If_2">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,639" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NGetText DisplayName="Get Text 'Estimate Expenses'" sap:VirtualizedContainerService.HintSize="334,157" sap2010:WorkflowViewState.IdRef="NGetText_6" ScopeIdentifier="9a7a99c3-8b37-49a9-8c96-3239c34a073f" TextString="[strExpenseAmount]" Version="V3">
+                    <uix:NGetText.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/payoffs.aspx" CvTextArea="799, 517, 49, 14" CvType="AnyWordGroup" DesignTimeRectangle="758, 514, 94, 22" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'$475.00'" FullSelectorArgument="&lt;webctrl class='hermit-grid' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableCol='4' tag='TD' idx='3' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hermit-grid' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='gridItemPayoff' /&gt;" Guid="0e9d5b8a-e026-42bc-9962-e4d9b3b28570" InformativeScreenshot="8fe443cf5057a2704392a054fed895dc.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Payoff' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <uix:Target CvTextArea="483, 517, 115, 16" CvTextArgument="Estimate Expenses" CvType="Text" DesignTimeRectangle="480, 514, 278, 22" ElementType="Text" FriendlyName="'Estimate Expenses'" FullSelectorArgument="&lt;webctrl class='hermit-grid' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tag='TD' aaname='Estimate Expenses' innertext='Estimate Expenses' visibleinnertext='Estimate Expenses' /&gt;" FuzzySelectorArgument="&lt;webctrl class='hermit-grid' tag='TABLE' /&gt;&lt;webctrl tag='TD' aaname='Estimate Expenses' innertext='Estimate Expenses' visibleinnertext='Estimate Expenses' type='' class='gridItemPayoff' check:text='Estimate Expenses' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAARoAAAAaCAYAAABoxJMOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAK6SURBVHhe7ZlrboMwEAZzRqRcqOIq9CjJQfojx3D9JLuLDYTETSrNSEglGLx28g2YnhwAQGcQDQB0B9EAQHcQDQB0B9EAQHcQDQB0B9EAQHeaorl9D+50OlW38Zob7eU6+vNGd8m77+fixsq44nae3C23AoDXsC6aw6FLQZ6F1Ek0ly8vhq8jVzX1AUBX/kY0nUA0AP+D50QTn1TKsmNw00/48Oamc/ksh1k+0eS/J7E0C22iNOQ5BdXHyQ3fqSK1tJtlo5dEbZFsiybVI57CYh1pjElwkxinfVpr15HOHcXxMm8BPXdWomrM5ruR88fyDz6Nx9/RzD/iECYRkhBEdUwEbCGapTBK2xiYtT5EqFNoy14Kabmu+5ncoEIs0SKQ21IK4fp6PCXU9ZrX60jnmv18bpwLM57qHHrutXnU3Kdjc/8AH8ATTzQ5rOaum9gSjXgCMPtr/SYpNcIWAy2u62kHztTXRAhJjFPKISJlslGHqtkjx5vGV5fjYiyynziHe8YD8B6efEcjgqjC+CrR6KXEcF4RTQ7bYhOhvrNXNCX8ol6PlUW6XhbERh1ropn35/OKdMySanHcY/pFOvBJvO5lcLzDlh/4i0Sz0VaFtvIk0WanaPKTyhBCLuQQ+5Vzk9u1nmgkW6KRyH7C33uXQ0lWe+cCoD/HRSPDFRF3dRvkp0Rj7+r3tjq05t1IruH40kleT7eP/YqxSyFs1aFr1uOtHiv7tXnK+4vvKrRd++4A/pjHXwb7bQ5R/PFXPvekMObPZEhMYKoBMqFN1/fBvhq5lf7n9inUpR4ZWo1pp7ZQS+7Xhjf3nYQg/3MkxhNp17EmGj3esOnr6u9EzIOnzHftGMC7aYoG2lhZAMA6iOYAiAbgMRDNARANwGMgGgDoDqIBgO4gGgDoDqIBgO4gGgDoDqIBgM449wuveI7SnrFC7wAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NGetText.Target>
+                  </uix:NGetText>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'A'" sap:VirtualizedContainerService.HintSize="334,157" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9a7a99c3-8b37-49a9-8c96-3239c34a073f" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/payoffs.aspx" CvElementArea="270, 803, 19, 19" CvType="CheckBox" DesignTimeRectangle="272, 805, 16, 16" DesignTimeScaleFactor="1" ElementType="CheckBox" FriendlyName="'Checkbox'" FullSelectorArgument="&lt;webctrl tableRow='2' tag='TABLE' /&gt;&lt;webctrl tag='INPUT' css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;input' idx='3' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tag='INPUT' type='checkbox' class='' aaname='' /&gt;" Guid="074bec30-c3ca-4b24-bf2a-fb311d2fde01" InformativeScreenshot="2ea808447c31698c1b3bc245678d28e0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Payoff' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <uix:Target CvTextArea="1051, 806, 11, 13" CvTextArgument="A" CvType="Text" DesignTimeRectangle="1051, 801, 52, 25" ElementType="Text" FriendlyName="'A'" FullSelectorArgument="&lt;webctrl tableRow='2' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tag='TD' aaname='A' innertext='A' visibleinnertext='A' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl isleaf='1' tag='TD' aaname='A' innertext='A' visibleinnertext='A' type='' class='' check:text='A' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADgAAAAdCAYAAAD/56+bAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADfSURBVFhH7Zi9DYMwFIQ9SUbITmkoGIGKCSgQe4DEGsAYCFGwwiVP+CX8yIYyZ/mTDssPN598osAsy4I8zyFrKBEfxcgmxChGHttBCERBdqIgO1GQnVuCc53h8Xx9kqGZ7JCEG4IjmlTk1iT1aOccXAtOLRKRKyqUsqYtZvuKgUtBrWc5AH3BV9MLQa1nhV62Q0VXU7/gt56dHXR0NfUKbuu5ojfKU1OP4P7reQxLTd2CWs9jHV3zP8UpqPU83xRXTd03GAhRkJ0oyE4UZGcnKJsQo4T/614Hx0PM+QkCb7zA4fT4UnmrAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Inactivate Estimate'" sap:VirtualizedContainerService.HintSize="334,157" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9a7a99c3-8b37-49a9-8c96-3239c34a073f" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/payoffs.aspx" CvTextArea="370, 705, 175, 16" CvTextArgument="Inactivate Estimate Espenses" CvType="Text" DesignTimeRectangle="370, 705, 175, 15" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Inactivate Estimate'" FullSelectorArgument="&lt;webctrl tableRow='24' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='A' class='' aaname='Inactivate Estimate Espenses' check:innerText='Inactivate Estimate Espenses' /&gt;" Guid="56e1431a-7f3f-4650-8041-c599644a0cd1" InformativeScreenshot="2c0ac71b076ab4343946038d97d5178a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Payoff' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_15" />
+              </If.Else>
+            </If>
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1046,147" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+              <ui:MultipleAssign.AssignOperations>
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[out_strPendingDisbDown]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[out_strPendingDisbDown.Replace("$","")]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[out_strCorpAdvDown]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[out_strCorpAdvDown.Replace("$","")]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                </scg:List>
+              </ui:MultipleAssign.AssignOperations>
+            </ui:MultipleAssign>
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1046,209" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+              <ui:MultipleAssign.AssignOperations>
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:Decimal">[CorpAdvDec]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:Decimal">[Convert.ToDecimal(out_strCorpAdvDown)]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:Decimal">[PendDisb]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:Decimal">[Convert.ToDecimal(out_strPendingDisbDown)]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:Decimal">[sum]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:Decimal">[CorpAdvDec + PendDisb]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[out_strPendingDisbDown]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[sum.ToString]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                </scg:List>
+              </ui:MultipleAssign.AssignOperations>
+            </ui:MultipleAssign>
+            <ui:RetryScope DisplayName="Retry Scope: Download Payoff Letter" sap:VirtualizedContainerService.HintSize="1046,810" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="3" RetryInterval="00:00:01">
+              <ui:RetryScope.ActivityBody>
+                <ActivityAction>
+                  <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="546,635" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:GetLastDownloadedFile FileResource="{x:Null}" Timeout="{x:Null}" DisplayName="Wait for Download: Endorsed Condolence File" DownloadFolder="[System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), &quot;Downloads&quot;)]" File="[ifPayoffStatementPayoff]" sap:VirtualizedContainerService.HintSize="484,524" sap2010:WorkflowViewState.IdRef="GetLastDownloadedFile_1" IgnoreFiles="tmp,dwn,crdownload">
+                      <ui:GetLastDownloadedFile.Body>
+                        <ActivityAction>
+                          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,268" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <uix:NClick ActivateBefore="True" ClickType="Single" DelayBefore="2" DisplayName="Click 'Print Payoff Statement'" sap:VirtualizedContainerService.HintSize="388,157" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9a7a99c3-8b37-49a9-8c96-3239c34a073f" Version="V3">
+                              <uix:NClick.Target>
+                                <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/payoffs.aspx" CvTextArea="970, 425, 135, 13" CvTextArgument="Print Payoff Statement" CvType="Text" DesignTimeRectangle="971, 425, 133, 15" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Print Payoff Statement'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='A' class='' aaname='Print Payoff Statement' check:innerText='Print Payoff Statement' /&gt;" Guid="f0d9b14a-adfd-43f4-a100-69f617b5b833" InformativeScreenshot="7c96a551093e6a44d8b9a27e6633408e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Payoff' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                      <uix:Target CvElementArea="949, 419, 20, 21" CvType="Icon" DesignTimeRectangle="951, 421, 16, 16" ElementType="InputBox" FriendlyName="'INPUT ctl00_ctl00_MainC…'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='INPUT' type='image' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl class='' tag='INPUT' type='image' aaname='Click to Print Payoff Statement...' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAI1SURBVDhPvZPfa5JRHMb7U/wT8mZdTOjHRLIwWIyhERgEzrGLCFQQNAQvXLvYTcxwYCGoBF74AxHnr4Ek5hREqFjeJWoSc+V00Ob06ZyD78nh2QgaPS8Pvvg+z4fvef16DVes/wOs7O8jXakI/a3bnaTEEgJTe3v4MRyiNRig0e/j69ERczSfZ8/aBweT5KyEwGSphJ8nJ2gcHuJLp4NP7TY+tloIJBL8eeeCSYXARLGI/ukpvpOppqGv/H7urWBwkj4vITBeKGBAgN3j4xkonZQen2ZE4sDxeIxyuYxUKgWTyQSz2XypaYZmaYd2JXFgr9dDNptFh0xiNBrhdDpht9tnbLPZ4HA4WKbZbCKTybCuJA5sNBpIp9Oo1+vQarWwWCwwGAzQ6/VYXHyIhQUl5ucVmJu7AbX6Hsvs7OwiFouxriQOrNVqyJO1KJFfUKlUEtgKVCo1FIpbBHTznJXKuywTjaYRCkVYVxIH0uNWq1XkcjnI5XIsLz8mJY3QKtUDljGQKx7fZV1JHBgKhZBMJhEIBCCTybC09AQazaMLTTNerxfhcJh1JXGgz+cjR36PSCSJtbVn2NhwY319Cy6Xe8qvuVdXn5N3Tv6OxLQriQM9Hg8ZvUBWoQCdTvdXloC0K4kD/WT76apQW61W9t19N/CmCAQ/fMZtx1NcX3Hhjvkdfp2dsYyUp11JHDitl9vbk7s/GpHlpR6ORhiST1GGSgh8S17yi83NS00zIgmB/6IrBgK/AUxkSAF8ZTStAAAAAElFTkSuQmCC" SearchSteps="Selector, FuzzySelector" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NClick.Target>
+                            </uix:NClick>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:GetLastDownloadedFile.Body>
+                    </ui:GetLastDownloadedFile>
+                  </Sequence>
+                </ActivityAction>
+              </ui:RetryScope.ActivityBody>
+              <ui:RetryScope.Condition>
+                <ActivityFunc x:TypeArguments="x:Boolean" />
+              </ui:RetryScope.Condition>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:RetryScope>
+            <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'Download Window and Close'" sap:VirtualizedContainerService.HintSize="1046,52" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="bc849a1287d2b664fa6ef3425fb632cb" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Untitled - Google Chrome' /&gt;">
+              <ui:WindowScope.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,244" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SpecialKey="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="388,133" sap2010:WorkflowViewState.IdRef="SendHotkey_1" Key="w" KeyModifiers="Ctrl">
+                      <ui:SendHotkey.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="7285023c-83c1-4239-ae78-c516e1bd7bc7">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:SendHotkey.Target>
+                    </ui:SendHotkey>
+                  </Sequence>
+                </ActivityAction>
+              </ui:WindowScope.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:WindowScope>
+            <ui:LogMessage DisplayName="Log Message: Endorsed File Name" sap:VirtualizedContainerService.HintSize="1046,143" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;The Payoff Letter is:&quot; + &quot;(&quot;+ ifPayoffStatementPayoff.FullName +&quot;)&quot; +&#xA;&quot;and the Archive folder path is &quot; + &quot;(&quot;+ in_strPayoffDocArchiveFolderDown.ToString +&quot;)&quot;]" />
+            <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="[in_strPayoffDocArchiveFolderDown.ToString]" DisplayName="Move File: From Download to Dynamic Condolence Folder." sap:VirtualizedContainerService.HintSize="1046,159" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[ifPayoffStatementPayoff.FullName]" />
+            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1046,178" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+              <ui:MultipleAssign.AssignOperations>
+                <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[strStraightDateDown]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Now.ToString("yyyyMMddHHmmss")]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[strPayoffStatementNamePay]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[Directory.GetFiles(in_strPayoffDocArchiveFolderDown.ToString,"*Payoff Letter*.pdf*")(0)]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                  <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                    <ui:AssignOperation.To>
+                      <OutArgument x:TypeArguments="x:String">[out_strPayoffLetterNameAndPathDown]</OutArgument>
+                    </ui:AssignOperation.To>
+                    <ui:AssignOperation.Value>
+                      <InArgument x:TypeArguments="x:String">[in_strPayoffDocArchiveFolderDown + in_strModFHADown + "_PAYOFF_" + strStraightDateDown + ".pdf"]</InArgument>
+                    </ui:AssignOperation.Value>
+                  </ui:AssignOperation>
+                </scg:List>
+              </ui:MultipleAssign.AssignOperations>
+            </ui:MultipleAssign>
+            <ui:LogMessage DisplayName="Log Message: Repayment File Name" sap:VirtualizedContainerService.HintSize="1046,143" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="[UiPath.Core.Activities.LogLevel.Info]" Message="[&quot;The Payoff Letter is: &quot; + &quot;(&quot; +  strPayoffStatementNamePay + &quot;)&quot;]" />
+            <ui:RenameFileX DisplayName="Rename File: From default name to 'FHA_REPAY_DateTime'" FilePath="[strPayoffStatementNamePay]" sap:VirtualizedContainerService.HintSize="1046,143" sap2010:WorkflowViewState.IdRef="RenameFileX_1" KeepExtension="True" NewName="[in_strModFHADown + &quot;_PAYOFF_&quot; + strStraightDateDown + &quot;.pdf&quot;]" />
+            <If Condition="[Not String.IsNullOrEmpty(strEstimatedExpense)]" sap:VirtualizedContainerService.HintSize="1046,1140" sap2010:WorkflowViewState.IdRef="If_3">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376,958" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DelayAfter="2" DisplayName="Click 'NEW'" sap:VirtualizedContainerService.HintSize="334,157" sap2010:WorkflowViewState.IdRef="NClick_6" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9a7a99c3-8b37-49a9-8c96-3239c34a073f" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/payoffs.aspx" CvElementArea="270, 695, 57, 33" CvTextArea="284, 704, 30, 13" CvTextArgument="New" CvType="Button" DesignTimeRectangle="266, 691, 65, 40" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl tableRow='24' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='image' tag='INPUT' class='' aaname='' /&gt;" Guid="07c5c217-d916-4047-91d5-34b4b868dfab" InformativeScreenshot="334b33b09bc0c7b028bac44ed1ea45d6.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Payoff' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Expense Amount'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,218" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="9a7a99c3-8b37-49a9-8c96-3239c34a073f" Text="[strExpenseAmount]" Version="V3">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/payoffs.aspx" CvElementArea="849, 595, 160, 22" CvType="InputBox" DesignTimeRectangle="851, 596, 156, 20" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl class='igte_CaribbeanEdit' tag='INPUT' type='text' aaname='' /&gt;" Guid="6d0a2eba-1084-4cc7-b4e8-f910fdf6a6e1" InformativeScreenshot="54ffa6047260418075ea0ef39215dafe.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Payoff' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <uix:Target CvTextArea="706, 596, 113, 16" CvTextArgument="Expense Amount:" CvType="Text" DesignTimeRectangle="706, 596, 113, 15" ElementType="Text" FriendlyName="'Expense Amount'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl class='headerLabel' tableRow='2' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl class='headerLabel' type='' tag='SPAN' aaname='Expense Amount:' check:innerText='Expense Amount:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHUAAAATCAYAAACuqUL7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIRSURBVGhD7VbbbcMwDOwkHaE79ScfGaFD+CPIHgngNZKMEQRZQo0skqZOkqm0QWGoOoAflmSSd0c/3lxHc+imNohuaoPopjaIyNT74cu9f3xmY3ehQy3hsm+SX9bUJg3M4DyowR1OtLpunIcvd7zRRQH/2NST23kzt3u323pj9+5MO2tFGMKXm0pCcOLb6DaTMKO7+22+Hh5CTed8gFjqlYcNStMHdSZ6grg+R33uBHR2c7jmecv+qGo+cl6I4xQ4CNAf6zKBh4jXru4Iw7TEHz+Nvu80Z0DlN1U1z8INIzWlxGNT5TwUVUJ6BBJICvfn/NF5GSAy3ciNiHJjLg/mCb1LTtGB77FMqzXV4q/0fsZU6/XLxXUDEzLi6EaSpkgYrof72I+uiz1auWPYAiemIbfCUEX1orVaUy3+imMBP/umMiEskDFV59Sm6ChNZtKP1C3dm0Y0dAwSW+/x/VILzximZrWLcqzaVG6GQj/6GVN1I1ZTFikN3qvNrRHOFgKevFpT46eSEK2t2FQ+48myOAlxKQxEQChscplUSQS6NnLPoJ5UngBYf9ZU0zS4Fq3mPpb587XmhDUDKn+UiBw3IklYCCokRPknygeIR2Jx6AGySCVvCTRtIbeAz4gZM0J9uu9pUz1YDwoQO+pPNKo3dR4Ef7+vW2Hqr5El2vHX6KY2iG5qg3itqR2rQDe1OTj3DfMMWw0tvJKiAAAAAElFTkSuQmCC" SearchSteps="Selector, FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NTypeInto.Target>
+                  </uix:NTypeInto>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Expense Description'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,218" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="9a7a99c3-8b37-49a9-8c96-3239c34a073f" Text="Appraisal" Version="V3">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/payoffs.aspx" CvElementArea="850, 570, 382, 23" CvType="InputBox" DesignTimeRectangle="851, 572, 380, 20" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='text' tag='INPUT' class='' aaname='' /&gt;" Guid="d241c79d-620d-4b02-a1d7-5dd54627686a" InformativeScreenshot="b4527a82e8c51bfae189cca59a72efad.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Payoff' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <uix:Target CvTextArea="706, 572, 137, 16" CvTextArgument="Expense Description:" CvType="Text" DesignTimeRectangle="706, 572, 136, 15" ElementType="Text" FriendlyName="'Expense Description'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;table' tableCol='1' tableRow='1' tag='TABLE' /&gt;&lt;webctrl class='headerLabel' tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl class='headerLabel' type='' tag='SPAN' aaname='Expense Description:' check:innerText='Expense Description:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAIwAAAATCAYAAABC8OWoAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJWSURBVGhD7VbbjcIwELxKKOF64ocPSqAIPhB9gEQbQBkI0YQPx7vOvhzbIBDidqSVLrHPnpkdm/wEh6MDHhhHFzwwji54YBxdYIG57VZh9js3a3OGSV+BY9gYGmfLQ7jBjPcDOD3B4bSOOlZhf4UXL4AZmO8KhwWrORiibTjBm/figcBcD2GxPsKDB+aFKDTnvB30L3YXePHBiGGJGkhg3oHOwOAphBQjaTQ+i9jCvFjixEJTUvHTkE/IjsxhhuD+WO1rc5ROM7xXpxZKzJc/4TJocjz7qnyKOgSnSS9tH/QNI+YJ/jW/rTw0fsOQxmBT1oewX8YxQhBFSmFIVJzgRHhcG5vDx8f12fxsKAisrM0heGXw93x/GMP9YP8SV2k2G1c+RQhONS+l/jtMvlnjBfrV7ndzYMo3TAJuRDcbUBEhCWGTTVPvsE1PJTnW1uaQZiLoez0n7SECa66jm8Ng+NQdiNq4pb/TbwuPfcNks0iDIgwRdM1EUFdzwvO+pf/VxQKdUQnMwB/+VjXy03sWbgMJw6eWwDA/jHHqn9lL8xZ+eWDw9EBRUyoiJEGJHgE41ro2R6GhzNBK0xlIuAbtfsNk4JxoatqQnGIUkUkIEyoJnxZQ+g2G58raHFYYSuu3aUHt+Cy9TM+wVk9gSvvjcykwan5NX4kzz0PjRy8YgSIkaWUEfhDHEqcMjMaiZGoC1O1G5g6YWJsDeYvKukYkTljTWngAtJ+ZT09gJrwcuSUfpH9Kp9D3dGCehmmE4yF8qJcemE+FB8bRhX8RGMfXwwPj6EAIfzHmcMCyoeIdAAAAAElFTkSuQmCC" SearchSteps="Selector, FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NTypeInto.Target>
+                  </uix:NTypeInto>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'OK'" sap:VirtualizedContainerService.HintSize="334,157" sap2010:WorkflowViewState.IdRef="NClick_7" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="9a7a99c3-8b37-49a9-8c96-3239c34a073f" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/payoffs.aspx" CvElementArea="891, 626, 50, 35" CvTextArea="905, 636, 21, 13" CvTextArgument="Ok" CvType="Button" DesignTimeRectangle="888, 623, 55, 40" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'INPUT ctl00_ctl00_MainC…'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' idx='2' tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='image' tag='INPUT' class='' aaname='' /&gt;" Guid="73b9b83f-29b5-4280-b333-4c4d84ae43a6" InformativeScreenshot="83a1c8821c76226796f6039d617bbc63.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Payoff' /&gt;" SearchSteps="FuzzySelector, CV" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                            <uix:Target CvElementArea="958, 626, 75, 36" CvTextArea="971, 636, 46, 13" CvTextArgument="Cancel" CvType="Button" DesignTimeRectangle="954, 623, 80, 40" ElementType="InputBox" FriendlyName="'INPUT'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;table&amp;gt;tbody&amp;gt;tr&amp;gt;td&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;table' idx='2' tableCol='2' tableRow='1' tag='TABLE' /&gt;&lt;webctrl name='ctl00$ctl00$MainContent$ContentPlaceHolder1$btnEstExpCancel' tableRow='4' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl name='ctl00$ctl00$MainContent$ContentPlaceHolder1$btnEstExpCancel' type='image' tag='INPUT' class='' aaname='' /&gt;" ImageBase64="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" SearchSteps="Selector, FuzzySelector, CV" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_17" />
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="1912, -8, 1936, 1056" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="8463ba158b35704108843d355c92ffce.jpg" Selector="&lt;html app='chrome.exe' title='Loan &amp;gt; Transactions &amp;gt; Loan' /&gt;" Title="Loan &gt; Transactions &gt; Loan" Url="[in_strTransactionsPageURLDown]" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

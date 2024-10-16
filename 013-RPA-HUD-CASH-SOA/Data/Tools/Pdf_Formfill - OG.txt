@@ -1,0 +1,41 @@
+Param 
+(
+[Parameter(Mandatory=$true)][string]$Dllpath,
+[Parameter(Mandatory=$true)][string]$InputFile,
+[Parameter(Mandatory=$true)][string]$OutputFile,
+[Parameter(Mandatory=$false)][string]$in_strFHACaseNoFPDF,
+[Parameter(Mandatory=$false)][string]$in_strBorrowerNameFPDF,
+[Parameter(Mandatory=$false)][string]$in_CoBorrowerNameFPDF,
+[Parameter(Mandatory=$false)][string]$in_BorrowerSSNFPDF,
+[Parameter(Mandatory=$true)][string]$in_strPropertyAddressFPDF,
+[Parameter(Mandatory=$false)][string]$in_strTotalBalanceFPDF,
+[Parameter(Mandatory=$false)][string]$in_strInterestRateFPDF,
+[Parameter(Mandatory=$false)][string]$in_strPrincipalFPDF,
+[Parameter(Mandatory=$false)][string]$in_strTotalInterestFPDF,
+[Parameter(Mandatory=$false)][string]$in_strServiceFeeFPDF,
+[Parameter(Mandatory=$false)][string]$in_strMIPFPDF,
+[Parameter(Mandatory=$false)][string]$in_strNotesDateFPDF,
+[Parameter(Mandatory=$false)][string]$in_TodayDateFPDF
+)
+
+[System.Reflection.Assembly]::LoadFrom($DllPath) | Out-Null 
+$PDFDoc = New-Object iTextSharp.text.pdf.PdfReader -ArgumentList $InputFile
+$PDFDoc_ = New-Object iTextSharp.text.pdf.PdfStamper($PDFDoc,[System.IO.File]::Create($OutputFile))
+$PDFDoc_.AcroFields.SetField("3",$in_strFHACaseNoFPDF) | Out-Null
+$PDFDoc_.AcroFields.SetField("4",$in_strFHACaseNoFPDF) | Out-Null
+$PDFDoc_.AcroFields.SetField("5",$in_CoBorrowerNameFPDF) | Out-Null
+$PDFDoc_.AcroFields.SetField("6",$in_BorrowerSSNFPDF) | Out-Null
+$PDFDoc_.AcroFields.SetField("10",$in_strPropertyAddressFPDF) | Out-Null
+$PDFDoc_.AcroFields.SetField("12",$in_strTotalBalanceFPDF) | Out-Null
+$PDFDoc_.AcroFields.SetField("14",$in_strInterestRateFPDF) | Out-Null
+$PDFDoc_.AcroFields.SetField("23",$in_strPrincipalFPDF) | Out-Null
+$PDFDoc_.AcroFields.SetField("24",$in_strInterestRateFPDF) | Out-Null
+$PDFDoc_.AcroFields.SetField("26",$in_strServiceFeeFPDF) | Out-Null
+$PDFDoc_.AcroFields.SetField("29",$in_strMIPFPDF) | Out-Null
+$PDFDoc_.AcroFields.SetField("36",$in_strPrincipalFPDF) | Out-Null
+$PDFDoc_.AcroFields.SetField("37",$in_strTotalInterestFPDF) | Out-Null
+$PDFDoc_.AcroFields.SetField("38",$in_strServiceFeeFPDF) | Out-Null
+$PDFDoc_.AcroFields.SetField("43",$in_strMIPFPDF) | Out-Null
+$PDFDoc_.AcroFields.SetField("31a",$in_TodayDateFPDF) | Out-Null
+$PDFDoc_.FormFlattening=1
+$PDFDoc_.Close();

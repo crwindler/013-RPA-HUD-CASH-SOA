@@ -1,0 +1,9 @@
+Today
+Borrower
+Property Address
+FHA Case No
+Investor No
+Loan Number
+The loan referenced above was called Due  Payable on
+Text1
+Get-PdfFieldNames -FilePath "D:\Users\vijaya.upadhyayula\Documents\UiPath\RPA_Rescind_Packet_Builds\Data\Input\05-11-18 Celink_Acceleration Letter_Novad.pdf" -ITextLibraryPath "D:\Users\vijaya.upadhyayula\Documents\UiPath\RPA_Rescind_Packet_Builds\Data\Tools\itextsharp.dll"

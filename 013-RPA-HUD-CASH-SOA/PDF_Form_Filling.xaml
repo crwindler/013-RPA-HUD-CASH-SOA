@@ -1,0 +1,382 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="PDF_Form_Filling" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:sma="clr-namespace:System.Management.Automation;assembly=System.Management.Automation" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="CurrentRow" Type="InArgument(sd:DataRow)" />
+    <x:Property Name="in_strBorrowerNameFPDF" Type="InArgument(x:String)" />
+    <x:Property Name="in_BorrowerSSNFPDF" Type="InArgument(x:String)" />
+    <x:Property Name="in_CoBorrowerNameFPDF" Type="InArgument(x:String)" />
+    <x:Property Name="in_strFHACaseNoFPDF" Type="InArgument(x:String)" />
+    <x:Property Name="in_strPropertyAddressFPDF" Type="InArgument(x:String)" />
+    <x:Property Name="in_strTotalBalanceFPDF" Type="InArgument(x:String)" />
+    <x:Property Name="in_strInterestRateFPDF" Type="InArgument(x:String)" />
+    <x:Property Name="in_strTotalInterestFPDF" Type="InArgument(x:String)" />
+    <x:Property Name="in_strServiceFeeFPDF" Type="InArgument(x:String)" />
+    <x:Property Name="in_strMIPFPDF" Type="InArgument(x:String)" />
+    <x:Property Name="in_strPrincipalFPDF" Type="InArgument(x:String)" />
+    <x:Property Name="in_strPayoffDateFPDF" Type="InArgument(x:String)" />
+    <x:Property Name="in_strStraightDateFPDF" Type="InArgument(x:String)" />
+    <x:Property Name="in_strRequesterFPDF" Type="InArgument(x:String)" />
+    <x:Property Name="in_strPerDiemFPDF" Type="InArgument(x:String)" />
+    <x:Property Name="in_strSOAPDFFullPathFPDF" Type="InArgument(x:String)" />
+    <x:Property Name="in_strNotarizedByFPDF" Type="InArgument(x:String)" />
+    <x:Property Name="in_strPreparedByFPDF" Type="InArgument(x:String)" />
+    <x:Property Name="in_strCertifiedByFPDF" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:PDF_Form_Filling.CurrentRow>
+    <InArgument x:TypeArguments="sd:DataRow" />
+  </this:PDF_Form_Filling.CurrentRow>
+  <this:PDF_Form_Filling.in_strBorrowerNameFPDF>
+    <InArgument x:TypeArguments="x:String" />
+  </this:PDF_Form_Filling.in_strBorrowerNameFPDF>
+  <this:PDF_Form_Filling.in_BorrowerSSNFPDF>
+    <InArgument x:TypeArguments="x:String" />
+  </this:PDF_Form_Filling.in_BorrowerSSNFPDF>
+  <this:PDF_Form_Filling.in_CoBorrowerNameFPDF>
+    <InArgument x:TypeArguments="x:String" />
+  </this:PDF_Form_Filling.in_CoBorrowerNameFPDF>
+  <this:PDF_Form_Filling.in_strFHACaseNoFPDF>
+    <InArgument x:TypeArguments="x:String" />
+  </this:PDF_Form_Filling.in_strFHACaseNoFPDF>
+  <this:PDF_Form_Filling.in_strPropertyAddressFPDF>
+    <InArgument x:TypeArguments="x:String" />
+  </this:PDF_Form_Filling.in_strPropertyAddressFPDF>
+  <this:PDF_Form_Filling.in_strTotalBalanceFPDF>
+    <InArgument x:TypeArguments="x:String" />
+  </this:PDF_Form_Filling.in_strTotalBalanceFPDF>
+  <this:PDF_Form_Filling.in_strTotalInterestFPDF>
+    <InArgument x:TypeArguments="x:String" />
+  </this:PDF_Form_Filling.in_strTotalInterestFPDF>
+  <this:PDF_Form_Filling.in_strServiceFeeFPDF>
+    <InArgument x:TypeArguments="x:String" />
+  </this:PDF_Form_Filling.in_strServiceFeeFPDF>
+  <this:PDF_Form_Filling.in_strMIPFPDF>
+    <InArgument x:TypeArguments="x:String" />
+  </this:PDF_Form_Filling.in_strMIPFPDF>
+  <this:PDF_Form_Filling.in_strPayoffDateFPDF>
+    <InArgument x:TypeArguments="x:String" />
+  </this:PDF_Form_Filling.in_strPayoffDateFPDF>
+  <this:PDF_Form_Filling.in_strStraightDateFPDF>
+    <InArgument x:TypeArguments="x:String" />
+  </this:PDF_Form_Filling.in_strStraightDateFPDF>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1249,1203</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>PDF_Form_Filling_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="54">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Management.Automation</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Management.Automation</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.StudioWeb.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>UiPath.Word.Activities.Design</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="PDF_Form_Filling" sap:VirtualizedContainerService.HintSize="541,1138" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="Str_Powershell_Code" />
+      <Variable x:TypeArguments="x:String" Default="S:\Data Team\UiPath\Development\Archive" Name="PDFOutputFilePath" />
+      <Variable x:TypeArguments="x:String" Name="ReadPowershellScript" />
+      <Variable x:TypeArguments="x:String" Default="\Data\Tools\itextsharp.dll" Name="DllPath" />
+      <Variable x:TypeArguments="x:String" Default="SOA Form.pdf" Name="in_strSOAPDFFormPath" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="PDFList" />
+      <Variable x:TypeArguments="x:String" Name="strFHACaseNoMod" />
+      <Variable x:TypeArguments="x:String" Name="io_strFullPDFOutputPathFPDF" />
+      <Variable x:TypeArguments="x:String" Name="out_intRowCounterFPDF" />
+      <Variable x:TypeArguments="x:String" Name="in_RowCounterZeroFPDF" />
+      <Variable x:TypeArguments="x:Int32" Name="RowIndex" />
+      <Variable x:TypeArguments="x:String" Name="strTodayDateFPDF" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="479,141" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Filling out SOA pdf has started&quot;]" />
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="479,426" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+      <ui:MultipleAssign.AssignOperations>
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[ReadPowershellScript]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[System.Environment.CurrentDirectory +"\Data\Tools\Pdf_Formfill.txt"]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[DllPath]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[System.Environment.CurrentDirectory +"\Data\Tools\itextsharp.dll"]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[in_strPropertyAddressFPDF]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Replace(in_strPropertyAddressFPDF.Trim(), "\s{2,}", " ")]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[in_strTotalBalanceFPDF]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[Double.Parse(in_strTotalBalanceFPDF).ToString("N2")]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[in_strTotalInterestFPDF]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[Double.Parse(in_strTotalInterestFPDF).ToString("N2")]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[in_strServiceFeeFPDF]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[Double.Parse(in_strServiceFeeFPDF).ToString("N2")]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[in_strMIPFPDF]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[Double.Parse(in_strMIPFPDF).ToString("N2")]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[in_strPrincipalFPDF]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[Double.Parse(in_strPrincipalFPDF).ToString("N2")]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[strFHACaseNoMod]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_strFHACaseNoFPDF.Replace("-","")]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[io_strFullPDFOutputPathFPDF]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[in_strSOAPDFFullPathFPDF+ "\" + strFHACaseNoMod + "_" + in_strRequesterFPDF + "_" + in_strStraightDateFPDF + ".pdf"]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:String">[strTodayDateFPDF]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:String">[Now.ToString("MM/dd/yyyy")]</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+        </scg:List>
+      </ui:MultipleAssign.AssignOperations>
+    </ui:MultipleAssign>
+    <ui:ReadTextFile File="{x:Null}" Content="[Str_Powershell_Code]" DisplayName="Read power shell script" FileName="[ReadPowershellScript]" sap:VirtualizedContainerService.HintSize="479,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ReadTextFile>
+    <ui:InvokePowerShell x:TypeArguments="sma:PSObject" ContinueOnError="{x:Null}" CommandText="[Str_Powershell_Code]" DisplayName="Invoke Power Shell" sap:VirtualizedContainerService.HintSize="479,79" sap2010:WorkflowViewState.IdRef="InvokePowerShell`1_3" IsScript="True">
+      <ui:InvokePowerShell.Parameters>
+        <InArgument x:TypeArguments="x:String" x:Key="DllPath">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="DllPath" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="InputFile">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strSOAPDFFormPath" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="OutputFile">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_strFullPDFOutputPathFPDF" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strFHACaseNoFPDF">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strFHACaseNoFPDF" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strBorrowerNameFPDF">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strBorrowerNameFPDF" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CoBorrowerNameFPDF">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_CoBorrowerNameFPDF" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_BorrowerSSNFPDF">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_BorrowerSSNFPDF" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strPropertyAddressFPDF">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strPropertyAddressFPDF" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strTotalBalanceFPDF">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;$&quot;+in_strTotalBalanceFPDF" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strInterestRateFPDF">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strInterestRateFPDF + &quot;%&quot;" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strPrincipalFPDF">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;$&quot;+in_strPrincipalFPDF" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strTotalInterestFPDF">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;$&quot;+in_strTotalInterestFPDF" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strServiceFeeFPDF">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;$&quot;+in_strServiceFeeFPDF" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strMIPFPDF">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;$&quot;+in_strMIPFPDF" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strPayoffDateFPDF">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strPayoffDateFPDF" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strPerDiemFPDF">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strPerDiemFPDF" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strNotarizedByFPDF">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strNotarizedByFPDF" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strPreparedByFPDF">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strPreparedByFPDF" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strCertifiedByFPDF">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_strCertifiedByFPDF" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="strTodayDateFPDF">
+          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="strTodayDateFPDF" />
+        </InArgument>
+      </ui:InvokePowerShell.Parameters>
+      <ui:InvokePowerShell.PowerShellVariables>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:InvokePowerShell.PowerShellVariables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokePowerShell>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="479,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;The SOA pdf has been created and the sequence is complete.&quot;]" />
+  </Sequence>
+</Activity>

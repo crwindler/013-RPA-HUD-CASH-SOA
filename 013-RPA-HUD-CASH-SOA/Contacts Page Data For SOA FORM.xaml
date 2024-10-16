@@ -1,0 +1,284 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Get_Form_Data_From_Loan_Page" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:this="clr-namespace:" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="io_strCoBorrowerNameContact" Type="InOutArgument(x:String)" />
+    <x:Property Name="in_strContactsPageURLContact" Type="InArgument(x:String)" />
+    <x:Property Name="out_strBorrowerSSNContact" Type="InOutArgument(x:String)" />
+    <x:Property Name="out_strBorrowerNameContact" Type="InOutArgument(x:String)" />
+    <x:Property Name="out_strPropertyAddressContact" Type="InOutArgument(x:String)" />
+    <x:Property Name="in_strPayoffURLContact" Type="InArgument(x:String)" />
+    <x:Property Name="in_strHERMITHomeURLContacts" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Get_Form_Data_From_Loan_Page.in_strContactsPageURLContact>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Get_Form_Data_From_Loan_Page.in_strContactsPageURLContact>
+  <this:Get_Form_Data_From_Loan_Page.in_strPayoffURLContact>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Get_Form_Data_From_Loan_Page.in_strPayoffURLContact>
+  <this:Get_Form_Data_From_Loan_Page.in_strHERMITHomeURLContacts>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Get_Form_Data_From_Loan_Page.in_strHERMITHomeURLContacts>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1232,2470</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Get_Form_Data_From_Loan_Page_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.ComponentModel</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Get_Form_Data_From_Loan_Page" sap:VirtualizedContainerService.HintSize="1204,2405" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="CoBrwrLastName" />
+      <Variable x:TypeArguments="x:String" Name="CoBrwrFirstName" />
+      <Variable x:TypeArguments="x:String" Name="BrwrFirstName" />
+      <Variable x:TypeArguments="x:String" Name="BrwrLastName" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Loan &gt; Payoff" sap:VirtualizedContainerService.HintSize="1142,2294" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="a2a543ff-37ff-457b-9a15-1d5664cff41b" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1108,2077" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="1046,82" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[in_strContactsPageURLContact]" Version="V3" />
+            <uix:NGetText DelayBefore="2" DisplayName="Get Text: Borrower First Name" sap:VirtualizedContainerService.HintSize="1046,157" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="a2a543ff-37ff-457b-9a15-1d5664cff41b" TextString="[BrwrFirstName]" Version="V3">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loan_contacts.aspx" CvTextArea="502, 523, 56, 13" CvType="AnyWordGroup" DesignTimeRectangle="500, 517, 95, 27" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'WALTER'" FullSelectorArgument="&lt;webctrl tableRow='3' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableCol='5' tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl isleaf='1' type='' class='' tag='TD' /&gt;" Guid="33b24c46-1759-4cd9-a428-f1d3272d450e" InformativeScreenshot="19c18253b26654df86fcf6ea4791f488.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Contacts' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="2">
+                      <uix:Target CvTextArea="285, 522, 56, 13" CvTextArgument="Borrower" CvType="Text" DesignTimeRectangle="284, 521, 58, 17" ElementType="Text" FriendlyName="'Borrower'" FullSelectorArgument="&lt;webctrl tableRow='3' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='' aaname='Borrower' check:innerText='Borrower' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAD4AAAAVCAYAAAAeql2xAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFRSURBVFhH7VNtDoMgDPWMJF7IcBU9ih5kPzxG1w/AUjCybPux4UuMFup7vLYM0Clu473hNt4bKsZX8MMAg32mNez/B06N+y2EDFlzyx7i30ejcVyd/qvrL3W8thavgt6jIrnJg6O9cYZ98/j24EfKdTA/jrzyKhHvkQOPGXls7DFLUOdAnGhGNN/xfMx3mJEwrZFIYeg4nOznxdkXJ0XhSDQjHxcufFOeG/FRcTSYc9TOVE5uRGPHhTRV1HbBiLJxW31dCHtIhDahza0T6myox7H8J2fT3wHc5VCIQjNH8x3PiC6MXBsvNbLupXGmvNqbIBx6KuUJ+18x/uWOy77uNHFivCBP4q10XOMzxkXEiqaDs8hRiGvj1qho6kLwPTd3m+LTKUGw7rujXoyQEhDkefpALcYJnBc5dD6B/1G8LRx6/3XjfeA23htu472hU+MAT25Yp6vWoc8GAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector" />
+                      <uix:Target CvTextArea="504, 496, 71, 13" CvTextArgument="First Name" CvType="Text" DesignTimeRectangle="500, 491, 95, 26" ElementType="Text" FriendlyName="'First Name'" FullSelectorArgument="&lt;webctrl tableRow='3' tag='TABLE' /&gt;&lt;webctrl aaname='First Name' tableRow='1' tag='TH' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='First Name' type='' tag='TH' class='' check:innerText='First Name' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGMAAAAeCAYAAAA4h6CKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHjSURBVGhD7Zq9jsIwDMd5gXune6PbeQ8egDdgYmY5sTExoG7dOiIhseZSx04cN0Ut9MMn2dJfbeKkTvyr2yKxcWZqbHO9/jqTDm2+vn/gpD2alhfPvcFYWQZDkQyGIhkMRTIYimQwFGkUjH2Nv0ik1Wfwby9PaN6O5fkfa1e5O0Ro3J71h3U93WnHxv5DvQGjf9OTwGgTjnCLPojg3P1yiP0Go+D/WJTsATD4OgxGwS8rg8bf6tAPd3OWUG+Pym1h/tndsCtY/igCybkIrbuugzs9YAQa8x0b6LlfKhbP+4/82iI2zgk2H/QFYPBHCiaJAMTEoH9oZdQVJjusRa4rtCmhCFnE7LRpPLVpDWKN+bWn1RswpKUk9FVGgsfv2ALUwTC8n859Uk+dOK1EdcjkUwwZU7Q7e8D5c3ykLFAZYny8E5PFjY2B4dv5zZHixH4YV66M3mp8GSNZqvbptDwMprRRLPuRMGIbjOKI5E8Co38PU2phGDJR4h1C/qEwvChmBwYCjv43Ycjxc8JZoTIoWWT5yzDMaa0QpwAjXY+Nzx6Fjf+aC0f+gh4Mo3M99lidWKNgmOaVwVAkg6FIBkORDIYiGQxFMhiKZDAUKYPRNkw6BP+1bU/M1jGee4OxsqXcO/cHTBfb6MGAmTgAAAAASUVORK5CYII=" SearchSteps="Selector, FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <uix:NGetText DisplayName="Get Text: Borrower Last Name" sap:VirtualizedContainerService.HintSize="1046,157" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="a2a543ff-37ff-457b-9a15-1d5664cff41b" TextString="[BrwrLastName]" Version="V3">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loan_contacts.aspx" CvTextArea="396, 523, 84, 13" CvType="AnyWordGroup" DesignTimeRectangle="393, 517, 107, 27" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'CONERLY JR'" FullSelectorArgument="&lt;webctrl tableRow='3' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl isleaf='1' type='' tag='TD' class='' /&gt;" Guid="73d33acd-cb16-4e79-a7f2-31ea17c8872f" InformativeScreenshot="4b57c991427be3083f41eb877d0e8152.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Contacts' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="2">
+                      <uix:Target CvTextArea="285, 522, 56, 13" CvTextArgument="Borrower" CvType="Text" DesignTimeRectangle="284, 521, 58, 17" ElementType="Text" FriendlyName="'Borrower'" FullSelectorArgument="&lt;webctrl tableRow='3' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='' aaname='Borrower' check:innerText='Borrower' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAD4AAAAVCAYAAAAeql2xAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFRSURBVFhH7VNtDoMgDPWMJF7IcBU9ih5kPzxG1w/AUjCybPux4UuMFup7vLYM0Clu473hNt4bKsZX8MMAg32mNez/B06N+y2EDFlzyx7i30ejcVyd/qvrL3W8thavgt6jIrnJg6O9cYZ98/j24EfKdTA/jrzyKhHvkQOPGXls7DFLUOdAnGhGNN/xfMx3mJEwrZFIYeg4nOznxdkXJ0XhSDQjHxcufFOeG/FRcTSYc9TOVE5uRGPHhTRV1HbBiLJxW31dCHtIhDahza0T6myox7H8J2fT3wHc5VCIQjNH8x3PiC6MXBsvNbLupXGmvNqbIBx6KuUJ+18x/uWOy77uNHFivCBP4q10XOMzxkXEiqaDs8hRiGvj1qho6kLwPTd3m+LTKUGw7rujXoyQEhDkefpALcYJnBc5dD6B/1G8LRx6/3XjfeA23htu472hU+MAT25Yp6vWoc8GAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector" />
+                      <uix:Target CvTextArea="397, 496, 69, 13" CvTextArgument="Last Name" CvType="Text" DesignTimeRectangle="393, 491, 107, 26" ElementType="Text" FriendlyName="'Last Name'" FullSelectorArgument="&lt;webctrl tableRow='3' tag='TABLE' /&gt;&lt;webctrl aaname='Last Name' tableRow='1' tag='TH' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Last Name' type='' tag='TH' class='' check:innerText='Last Name' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAG8AAAAeCAYAAAAiu0AEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHnSURBVGhD7Zs7bsMwDIZzgd6pN8qee+QAvkGmzF4Kb54yBNm8eTRgICurF6mHZcQOVERE+QM/olcpmR/loEMOIGKrw+32A2KePnx9H01Df4rrd8hK4DGzwGNsgcfYAo+xBR5jCzzG3gWvGfS/g09oz/n5v7TdG2DqL378/IBJDw5dtPa/uCp4zbAeG+EBjNDguMCj9kfhvYrt4SkhLIFH7QLwOrjrJaTglihHAJTuVzt+6p9uxCp6NWb/1p0hB+86mhUkmnNnmx/QBrGmvoN2dh0lPJP1JZqrrUgKwnMPqpJz0v00sS6pNjmYFA/3VWHQfO/g6LjpHq6P8LEo7J5YWLiHL7R4Hs+UnDGJXYML3zzt5PYl8IwyFbwZnpq3bZX0PnPztJPbtwnOCiwfOynOClz+5imZ6lx7+FBBIvbAo9go3IPG7brszaM9N8JbCNd/3uXgpbAW8DJrlfA1tAse9Z3cHjGsQvBy56/E5eG55FByVxIbfwfi/HZ40es52cMWhJ9/Cx4DmG/Ay8glBJNnNI9w1w9PyUrmlaIv/+A25hKUKxyKR+sx4VbTMJqYEczN8JbxwmepwbvgieuywGNsgcfYAo+xBR5jCzzGFniMLfAYO4KnO2KeNr9V0A0RD4WsBB4zeVYAvwHxsRZjMLuYAAAAAElFTkSuQmCC" SearchSteps="Selector, FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <Assign sap:VirtualizedContainerService.HintSize="1046,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[out_strBorrowerNameContact]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[BrwrFirstName + " " + BrwrLastName]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <uix:NCheckState DisplayName="Check App State 'Co-Borrower'" sap:VirtualizedContainerService.HintSize="1046,808" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="a2a543ff-37ff-457b-9a15-1d5664cff41b" Version="V3">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="496,591" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NGetText DisplayName="Get Text: Co-Borrower First Name" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NGetText_7" ScopeIdentifier="a2a543ff-37ff-457b-9a15-1d5664cff41b" TextString="[CoBrwrFirstName]" Version="V3">
+                    <uix:NGetText.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loan_contacts.aspx" CvTextArea="518, 541, 54, 13" CvType="AnyWordGroup" DesignTimeRectangle="516, 535, 89, 27" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'MARGIE'" FullSelectorArgument="&lt;webctrl tableRow='3' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableCol='5' tableRow='3' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl isleaf='1' type='' class='' tag='TD' /&gt;" Guid="d1d1abc2-dd16-476d-9898-5aa13d154883" InformativeScreenshot="555d7591f659249966379b1050be4df1.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Contacts' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="2">
+                            <uix:Target CvTextArea="306, 540, 77, 13" CvTextArgument="Co-Borrower" CvType="Text" DesignTimeRectangle="305, 539, 80, 17" ElementType="Text" FriendlyName="'Co-Borrower'" FullSelectorArgument="&lt;webctrl tableRow='3' tag='TABLE' /&gt;&lt;webctrl tableRow='3' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='' aaname='Co-Borrower' check:innerText='Co-Borrower' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFQAAAAVCAYAAADYb8kIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHNSURBVFhH7ZXtkYQgDIZt0LEeh060Eq1jf1iFLXCQACYkeC7Lzdzd8OOdla/w5iGww3metqudOtDG6kAbqwNtrA60sYpAj3W0wzAkjeuhznumzRoSK2nelLl/WyrQbfYJG7ulPgRSDxXXm132fXZQv08S6Gux4zDa5ZX17yaD/I40oOHg/lmVCqBw1afFHlm/JqzkJ9e3XKFaX4x5jR12mVx79oca9vIHPBlrXP9ACkD35OOSIsmLBtpXsRTzKuxJJYA+rRoOHkGUry8HFcXnI7TUBzcimsYxdtAwzg/kzpPPK377eePkRNoxZx5D85QXAVcl0GwjJ24kFybHjQRIcS/x1NA95H6YHH2C7j1RaNvs9tndftDGdeiNfgdBVYa8xJ5SlVdeArrW8WrEBDWgTtTgLaAnQO88uXa61n6e9nvFiN4vhfEaoMU/JdZ/Xw1sHUgmC6IGf7hCcZxWZqjU1cVJNxJjCJ9RVUCd8FGWZulTwM0iMJYwkwY0j5kBAfPlA9SS+84TvKPZ2+nbxaoOa1K7FqgXBIZyR2mwEHwQgS1VuErEuDbvSvQZUK9bT7CGxH0Sg45/ArSrTh1oY3WgjdWBNlYH2lgdaFOd9gv3jR8lrBDy7wAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector" />
+                            <uix:Target CvTextArea="520, 487, 71, 13" CvTextArgument="First Name" CvType="Text" DesignTimeRectangle="516, 482, 89, 26" ElementType="Text" FriendlyName="'First Name'" FullSelectorArgument="&lt;webctrl tableRow='3' tag='TABLE' /&gt;&lt;webctrl aaname='First Name' tableRow='1' tag='TH' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='First Name' type='' tag='TH' class='' check:innerText='First Name' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAF0AAAAeCAYAAABOvRIBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHVSURBVGhD7Zo9jsIwEIW5wN5pb7Q99+AA3ICKOs2KjooiSkdHiYREOxs7M/F47EhxEjzFzpOewL9jfx4nFOzAVF272+0XzHW9+/r+8V/cp/lz5owNeiUbdAUbdAUbdAUbdAUbdAUXQT/e8Re91P3i2/fXty+25/z49b5A6yO8oTmE+s/H3dYLoMcb5t5k84cOnniIqQl6L9bnX0NfbQfchZgDvRdBtkxnm6f+7X2of15PASzp1cHej4+BAjzgyOYeLPrg2BT6CZqXr0KxNZ8fvuZ57dhcffuZr0vExjGD1iddBegI2/dBGAR6BIDtczO9H9/g3C5WPi6BC2N4zKRM/alMaxBrjOde5gXQpcIhTGV6OCSegZnDK4C+H7P+AU2S6c4i2yVkiiFjinKyBxwfxypzhUwX/cfMCho3UAQ9xCPFcXv5efKZPnm7stBThdtb7vrQmcOG8LoWQh/LqCHuRJ9V0Kf3sMSVoUsg4hlP7bOh92Y3J4KOBznehoXQZf8tDkEh0wkKKX4pDWOccnEy0Nmzm+Lyg3Dzt37O+EU5G3oyH4uz0EXQzdvYoCvYoCvYoCvYoCvYoCvYoCvYoCs4gu4K5rr2/2V0X0yfFWds0CspMAb4A2BlZlx0ZBtGAAAAAElFTkSuQmCC" SearchSteps="Selector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NGetText.Target>
+                  </uix:NGetText>
+                  <uix:NGetText DisplayName="Get Text: Co-Borrower Last Name" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NGetText_6" ScopeIdentifier="a2a543ff-37ff-457b-9a15-1d5664cff41b" TextString="[CoBrwrLastName]" Version="V3">
+                    <uix:NGetText.Target>
+                      <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loan_contacts.aspx" CvTextArea="431, 541, 39, 13" CvType="AnyWordGroup" DesignTimeRectangle="428, 535, 88, 27" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'DARR'" FullSelectorArgument="&lt;webctrl tableRow='3' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableRow='3' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl isleaf='1' type='' tag='TD' class='' /&gt;" Guid="a2d36d7c-0c56-44ae-a244-3cded04d8c7b" InformativeScreenshot="62cdcbe8c877096af42552d81f846948.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Contacts' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target CvTextArea="432, 487, 70, 13" CvTextArgument="Last Name" CvType="Text" DesignTimeRectangle="428, 482, 88, 26" ElementType="Text" FriendlyName="'Last Name'" FullSelectorArgument="&lt;webctrl tableRow='3' tag='TABLE' /&gt;&lt;webctrl aaname='Last Name' tableRow='1' tag='TH' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Last Name' type='' tag='TH' class='' check:innerText='Last Name' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFwAAAAeCAYAAAChf3k/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHiSURBVGhD7Zo7joMwEIa5wN5pb7Q998gBcoNU1DSrdFQpIjo6SqRIaWfxY+zxAy0YGKWYX/qlGNsz9ucHiZQKRKyqHo9fEPO5+vr+AWVVwM/iY03ZCnAGC3BmC3BmC3BmC3BmC3BmbwN+6WFS39iHe77+VN/hqX8uvKG9+Od199ZPnw1t+7n+LOAq/mJsBD6LtBHgpf43NgE+CwEL8GbUAJxoW+yPevVQ67oQJsAIV+zjHLWxfVPgN2hf+pEVuYLs2KauJ7Hm+oaOK8odzCe8zkp8LHBbP3U3XQ5hWBAI2U3etF29w+f+7aA+mLgx8KuuQ2i+D82ZlLE9lnEM0RjD2GU+focru4kYBcC1MjtlA/Da7fYR2uyVEu3yGDDmiHNGZQM4PSFhrm0+ZYfjIJPjHi2EkqvbBNzHRmEcA2mWjpPf4YunKgs8letf4EOBx4AT4MR+MvaIbgTuylYmx0KbXcD339vUpwA3E/JA8jCiOx3rVwOfTU5MkMMuojsFhcDj9kcsQBnwjMyEw7tzGkbd3h9BvwhG4QvI7/rcpDLAST53isgiqPhPHTN8Ka4GnsQjeQq9Dbh4twU4swU4swU4swU4swU4swU4swU4swPgqiDms/tvoSqIzhFlK8AZ5NkC/AHfaxIFjo7k3AAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NGetText.Target>
+                  </uix:NGetText>
+                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[io_strCoBorrowerNameContact]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[CoBrwrFirstName + " " + CoBrwrLastName]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="496,197" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[io_strCoBorrowerNameContact]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">NA</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loan_contacts.aspx" CvTextArea="284, 540, 77, 13" CvTextArgument="Co-Borrower" CvType="Text" DesignTimeRectangle="283, 539, 80, 17" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Co-Borrower'" FullSelectorArgument="&lt;webctrl tableRow='3' tag='TABLE' /&gt;&lt;webctrl tableRow='3' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='' aaname='Co-Borrower' check:innerText='Co-Borrower' /&gt;" Guid="39cb83d6-2555-44cf-ad70-8623b26e7cc4" InformativeScreenshot="e12926a86adb181072f82342dce5c3d6.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Contacts' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="283, 487, 86, 16" CvTextArgument="Contact Type" CvType="Text" DesignTimeRectangle="279, 482, 106, 26" ElementType="Text" FriendlyName="'Contact Type'" FullSelectorArgument="&lt;webctrl tableRow='3' tag='TABLE' /&gt;&lt;webctrl aaname='Contact Type' tableRow='1' tag='TH' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Contact Type' type='' tag='TH' class='' check:innerText='Contact Type' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAG4AAAAeCAYAAADNeSs6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAI0SURBVGhD7ZuxbsIwEIZ5gb5T36g778ED9A2YmFkqNiYGxMbGiITE6sbYZ/vu7DhO0irX3km/ROzEufs/n6FDV0ZDZKxOpy+jkqfV2/uHsbIX8Fm1XAEnBSdMCk6oFJxQKTihUnBCpeCEqh3c7ub/9IN4mv0mc58AfV59Cbm4HrLPLEVN4NbH56um8y6OQfHp2FTZ98y23uZi7lUIB3O2RTwuZp2dX56Gg7MGdLXdj9v8/EzKbY7R8jnXu+cPg2sxFB9B+CgN6xy9qTbAMHoMg+GlcbImhMvRwwhxM5/JM1gcHK93a/YPO+LWCfPXJDe6QVDe836lDAbnYNRfTu+jBgSTfZGl+WAY6fTa/ej9kzrOj8GzZC1aB0AKJxK5dnn1bZ42zQyOFJsZY2BIgWweRLrOzeMuQPdbTTwqU7NrG4auwfzy+bO6RmowuKKhqbJG4YKawcGa3gQ8nzc8aCK4aDbfINwPfI8DxyN05EQNBgcm9L/YGzBjx/Vf/2zHxfEnW4eDw2sMO6HGazi4TjzZuLNgjCZcA0HB0SMF7nfz3pwuSuu5a3g/3jRllcDhzgk5d4L3hmcKdcD13CCbwL3kE4rBk0mLpfNVcAkcZwp0lYt79yuOdn4w0UdqcMylz7QyuFgv7upQR/rrmG4Q4lWa11S1g/tvAvMJFLYBf1kKriLoWApIwS1WyZGd+Y5UcKpRUnBCpeCESsEJlYITqgDOflDJU/jfAXuhsfwATgpOWDhOxnwD/8PZgxyA5CUAAAAASUVORK5CYII=" SearchSteps="Selector, FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NCheckState.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NCheckState>
+            <uix:NGetText DisplayName="Get Text: Borrower SSN" sap:VirtualizedContainerService.HintSize="1046,157" sap2010:WorkflowViewState.IdRef="NGetText_3" ScopeIdentifier="a2a543ff-37ff-457b-9a15-1d5664cff41b" TextString="[out_strBorrowerSSNContact]" Version="V3">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loan_contacts.aspx" CvTextArea="764, 271, 85, 13" CvType="AnyWordGroup" DesignTimeRectangle="766, 271, 83, 15" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'XXX-XX-6414'" FullSelectorArgument="&lt;webctrl tableCol='16' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='' /&gt;" Guid="7e7b8322-a31d-4412-8f35-05e054e432d8" InformativeScreenshot="0d66469c7fa7fc4cdaa031e861406250.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Contacts' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="671, 271, 31, 13" CvTextArgument="SSN:" CvType="Text" DesignTimeRectangle="671, 271, 95, 15" ElementType="Text" FriendlyName="'SSN'" FullSelectorArgument="&lt;webctrl tableCol='16' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='headerLabel' aaname='                                             SSN:                                         ' check:innerText='SSN:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGMAAAATCAYAAACEGbNUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE0SURBVFhH7Ze9DoIwFEZ5Eh/Bh+EJdOIdmB10d3BzIA7MzMaNidXEuLDh4Mx8hdD/0hYnm/gNJ4H263JPbi8k754IxAFkRARkRARkRIQto61os97SipNV9PgmI/aOdFXOXA/jWk5FK9cA47ajJElMGQ3t1eLWx6nYh2Z5RhG1KTtxDjL83M+pIYMXUiu+QSijdY0sPmSEeDlkLC32XEaTITOWDNZRavf8O9bMmIom2df6fjAjOqeiIhv3JwGQEcYe4AOPMheFdhXMmREyho7gz8N8KXBNBZmVwZEdoH8ZeTOqDG1/BDJ8eGW8+45dNW4ZVsaQId4hw8/zosvgV4+8lozP2CUZU4ZyBjPDxYtOqfWfYc8CVcSizIwMIQwyZmAiUqMzwG+BjIiAjIiAjIiAjGgg+gCmFGCw0LJvOwAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <uix:NGetText DisplayName="Get Text: Property Address" sap:VirtualizedContainerService.HintSize="1046,157" sap2010:WorkflowViewState.IdRef="NGetText_4" ScopeIdentifier="a2a543ff-37ff-457b-9a15-1d5664cff41b" TextString="[out_strPropertyAddressContact]" Version="V3">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.hermitsp.com/forms/loans/loan_contacts.aspx" DesignTimeRectangle="766, 301, 304, 30" DesignTimeScaleFactor="1" FriendlyName="'3206 BERMUDA AVE'" FullSelectorArgument="&lt;webctrl tableCol='16' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableCol='2' tableRow='4' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' class='' tag='TD' aaname='                                                                                  ' /&gt;" Guid="9fcbb98a-5777-4a13-b3f6-dc8d4475f6e3" InformativeScreenshot="e3e49db1bf4b868b5b1d6587a99d297c.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Loan &amp;gt; Contacts' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target CvTextArea="669, 301, 59, 13" CvTextArgument="Address:" CvType="Text" DesignTimeRectangle="671, 301, 95, 30" ElementType="Text" FriendlyName="'Address'" FullSelectorArgument="&lt;webctrl tableCol='16' tableRow='1' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='headerLabel' aaname='                                             Address:                                         ' check:innerText='Address:' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGMAAAAiCAYAAABLP2dcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHcSURBVGhD7Zg7bgIxEIb3JDlCTpKKE5CKO1CngJ4iPaKgpkbpqDgAoqGDInXqCX6Md+wx3iJImZX+4hMys+vHfB6zS/f9QwRsABmGgAxDQIYhKjKutJ6908vrndmOTipecqRF89qhOPB8fVRkXHY0dcnzzGl9KeIKyPgz5w29dRMt47SdexGL5cp/TrfXLK6BjGdRyOAjakX7RhJZWJC1U9e149zvihZ+rFh9WUXeN8OhHy/dk3Dz6+NyPIfcQGlzZf3ZJJfBCVkefXu/dIsrjqrimpQITvZQPCVW9Fu9p4+HeUQBxbXcZgHlnEcrQ038oI8qvbi8gobiul25p5rggEoqy3GIPseIkCGPqPgdL1QsUldLntyheEuGotj9MiY3iJQVyI+xsdDLqCy4p1X2eXKfUhkNenFSOBP7drDIEZFk8CLljqt+z9Ie/SYMxSsyHt0T5OiKDZUQ2+VRGvvidt6XUfJHW15wZbdxomTyYgJCEvTTVDtekeHgcdJ9clOIF1FPMU8xnkdUxShkOKovfeDfgAxDQIYhIMMQkGEIyDDDDTJscKPPSQcZNjjQvIMMI6AybHHeQIYlIMMQkGEB9yfhBMeUEfA0ZQy89JkCMgwBGYaADENAhhmIfgHbsx6a1sgOeAAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="1046,82" sap2010:WorkflowViewState.IdRef="NGoToUrl_2" Url="[in_strHERMITHomeURLContacts]" Version="V3" />
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="1912, -8, 1936, 1056" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="7640d5726fd9a0a9f03aeaf7775a2bf8.jpg" Selector="&lt;html app='chrome.exe' title='Loan &amp;gt; Payoff' /&gt;" Title="Loan &gt; Loan Balance" Url="[in_strPayoffURLContact]" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
